@@ -5,7 +5,7 @@
         {
             "label": "echo",
             "type": "shell",
-            "command": "php -S localhost:8000",         // Change to different port if you are receiving invalid request
+            "command": "php -S localhost:8001",         // Change to different port if you are receiving invalid request
             "group": {
                 "kind": "build",
                 "isDefault": true

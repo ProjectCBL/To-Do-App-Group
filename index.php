@@ -5,9 +5,9 @@
 
     // DB information
     $server = "localhost";
-    $username = "abcde";
-    $password = "password1";
-    $database = "myDB";
+    $username = "root";
+    $password = "";
+    $database = "todo";
 
     // open connection to DB
     $conn = new mysqli($server, $username, $password, $database);

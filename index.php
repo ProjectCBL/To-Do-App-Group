@@ -7,9 +7,10 @@
     $server = "localhost";
     $username = "abcde";
     $password = "password1";
+    $database = "myDB";
 
     // open connection to DB
-    $conn = new mysqli_connect($server, $username, $password);
+    $conn = new mysqli_connect($server, $username, $password, $database);
 
     if (!$conn) {
       die("Connection to DB failed!");

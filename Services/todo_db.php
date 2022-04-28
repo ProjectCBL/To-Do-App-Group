@@ -6,6 +6,8 @@
 
         function __construct()
         {
+            // This class uses the parameters defined in db_config.php.
+            // You should not use setters to alter this class's attributes.
             Database::__construct();
         }
 

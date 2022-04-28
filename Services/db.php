@@ -26,61 +26,62 @@
             $this->_database = $database;
         }
 
-        function getServerName(){
+        public function getServerName(){
             return $this->_server;
         }
 
-        function setServerName($server){
+        public function setServerName($server){
             $this->_server = $server;
         }
 
-        function getUsername(){
+        public function getUsername(){
             return $this->_username;
         }
 
-        function setUsername($username){
+        public function setUsername($username){
             $this->_username = $username;
         }
 
-        function getPassword(){
+        public function getPassword(){
             return $this->_password;
         }
 
-        function setPassword($password){
+        public function setPassword($password){
             $this->_password = $password;
         }
 
-        function getDatabaseName(){
+        public function getDatabaseName(){
             return $this->_database;
         }
 
-        function setDatabaseName($database){
+        public function setDatabaseName($database){
             $this->_database = $database;
         }
 
-        function getConnection(){
+        public function getConnection(){
             return $this->_conn;
         }
 
-        function connect(){
+        public function connect(){
             $this->_conn = new mysqli($this->_server, $this->_username, $this->_password, $this->_database);
-            print((!$this->_conn) ? die("Connection to DB failed!") : "Connected to DB!");
+            echo (!$this->_conn) ? die("Connection to DB failed!") : '<script>console.log("Connected to DB!")</script>';
         }
 
         // Use this function to directly affect database.
-        function executeQuery($sql){
-            print(($this->_conn->query($sql) == TRUE) ? "SQL Query: \n" . $sql . "\nExecuted!!!" : "Error performing query: " . $this->_conn->error); 
+        public function executeQuery($sql){
+            $queryResult = ($this->_conn->query($sql) == TRUE) ? "SQL Query: {$sql} Executed!!!" : "Error performing query: {$this->_conn->error}";
+            echo '<script>console.log("' . $queryResult . '");</script>'; 
         }
 
         // Obtaining data through SELECT statements
         // This function returns all the rows associated to the SELECT statement.
         // Use "fetch_assoc" method to grab each row at a time.
-        function grabQueryResults($sql){
+        public function grabQueryResults($sql){
             return $this->_conn->query($sql);
         }
 
         // Closes connection to database
-        function close(){
+        public function close(){
             mysqli_close($this->_conn);
         }
 

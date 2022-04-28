@@ -4,11 +4,11 @@
 
     class Database{
 
-        private $_server;
-        private $_username;
-        private $_password;
-        private $_database;
-        private $_conn;
+        protected $_server;
+        protected $_username;
+        protected $_password;
+        protected $_database;
+        protected $_conn;
 
         function __construct()
         {
@@ -62,17 +62,14 @@
             return $this->_conn;
         }
 
-
-        // REMOVE: The connected to db msg when deploying
         function connect(){
             $this->_conn = new mysqli($this->_server, $this->_username, $this->_password, $this->_database);
-            echo (!$this->_conn) ? die("Connection to DB failed!") : "Connected to DB!";
+            print((!$this->_conn) ? die("Connection to DB failed!") : "Connected to DB!");
         }
 
         // Use this function to directly affect database.
-        // REMOVE: The succesful query msg when deploying
         function executeQuery($sql){
-            echo ($this->_conn->query($sql) == TRUE) ? "SQL Query: \n" . $sql . "\nExecuted!!!" : "Error performing query: " . $this->_conn->error; 
+            print(($this->_conn->query($sql) == TRUE) ? "SQL Query: \n" . $sql . "\nExecuted!!!" : "Error performing query: " . $this->_conn->error); 
         }
 
         // Obtaining data through SELECT statements

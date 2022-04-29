@@ -1,0 +1,15 @@
+{
+    // Make sure to install php and set php to path
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "echo",
+            "type": "shell",
+            "command": "php -S localhost:8001",         // Change to different port if you are receiving invalid request
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}

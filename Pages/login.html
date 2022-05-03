@@ -10,7 +10,7 @@
   <link href="../StyleSheets/login.css" rel="stylesheet">
 </head> 
 
-<body>
+<body id="body">
 <br> <h1>Login</h1> <br> <br>
 
 <div class="container-fluid">
@@ -28,8 +28,10 @@
           <input type="password" name="password" id="pass" class="form-control" required>
         </div> 
         
+        <p id="invalid" style="color: red;"></p>
+
         <br>
-        <button type="submit" value="submit" class="btn btn-primary">Sign In</button><br>
+        <button type="button" class="btn btn-primary" onclick="login()">Sign In</button><br>
       or <br> <a href="signup.html">Create an Account</a>
       </form>
     </div>
@@ -45,6 +47,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<script src="../JavaScript/action.js"></script>
 </body>
 
 </html>

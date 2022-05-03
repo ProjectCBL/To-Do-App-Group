@@ -1,0 +1,23 @@
+/* signup page */
+h1 {
+    text-align: center;
+    color: white;
+    padding-top: 20px;
+  }
+
+  body {
+    align: center;
+    background: #decce7;
+    padding-right: 100px;
+    padding-left: 100px;
+  }
+
+  form {
+    padding: 30px 90px 30px 90px;
+    margin: auto;
+    text-align: center;
+    resize: vertical;
+    background: linear-gradient(90deg, #decce7, #f4d6df, #decce7);
+    border-radius: 4px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+  }

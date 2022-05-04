@@ -26,6 +26,11 @@
             );
         }
 
+        function getUserRow($username){
+            $sql = "SELECT * FROM Users WHERE UserName='" . $username . "'";
+            return $this->grabQueryResults($sql)->fetch_assoc();
+        }
+
         function getAllUsers(){
             $sql = "SELECT * FROM Users";
             return $this->grabQueryResults($sql);

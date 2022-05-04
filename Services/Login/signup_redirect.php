@@ -1,5 +1,5 @@
 <?php
 
-    require_once("../Pages/signup.html");
+    require_once("../../Pages/signup.html");
     
 ?>

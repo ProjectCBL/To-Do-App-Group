@@ -1,8 +1,9 @@
 -- User related entries
-INSERT INTO users(UserName, Password) VALUES("jupiter", ";%Zns&m3Tv");
-INSERT INTO users(UserName, Password) VALUES("romanholiday", "Lb5Z\H$2a=");
-INSERT INTO users(UserName, Password) VALUES("cauliflower", "/a9^D$zX`+");
-INSERT INTO users(UserName, Password) VALUES("tangerine", "MEdR>5'Gb`");
+INSERT INTO users(UserName, Password, Email, FirstName, LastName) VALUES
+    ("jupiter", ";%Zns&m3Tv", "ashley_bradtke21@hotmail.com", "Ashley", "Bradtke"),
+    ("romanholiday", "Lb5Z\H$2a=", "evan_ondricka@hotmail.com", "Evan", "Odrick"),
+    ("cauliflower", "/a9^D$zX`+", "nya.yundt54@gmail.com", "Anthony", "Hubbert"),
+    ("tangerine", "MEdR>5'Gb`", "clementine10@hotmail.com", "Clementine", "Greer");
 
 -- Task related entries
 INSERT INTO Tasks(Title, Description, AccountID, Status, EntryDate, DueDate) VALUES

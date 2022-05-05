@@ -1,4 +1,3 @@
---Single file version of To_Do_Database.sql and Populate.sql
 DROP DATABASE IF EXISTS ToDo;
 Drop TABLE IF EXISTS Tasks;
 DROP TABLE IF EXISTS Users;
@@ -11,15 +10,18 @@ CREATE TABLE Users(
 	uID INT NOT NULL AUTO_INCREMENT,
 	UserName VARCHAR(50) NOT NULL UNIQUE ,
 	Password VARCHAR(50) NOT NULL,
+	Email VARCHAR(100) NOT NULL,
+	FirstName VARCHAR(50) NOT NULL,
+	LastName VARCHAR(50) NOT NULL,
 	PRIMARY KEY(uID)
 ) ENGINE=INNODB;
 
 CREATE TABLE Tasks(
 	tID INT NOT NULL AUTO_INCREMENT,
-	Title VARCHAR(80),
+	Title VARCHAR(80) NOT NULL,
 	Description VARCHAR(4000),
 	AccountID INT NOT NULL,
-	Status ENUM('Not-Started', 'In-Progress', 'Done', 'OverDue'),
+	Status ENUM('Not-Started', 'In-Progress', 'Done', 'OverDue') NOT NULL,
 	EntryDate DATE,
 	DueDate DATE,
 	PRIMARY KEY(tID),
@@ -29,10 +31,11 @@ CREATE TABLE Tasks(
 ) ENGINE=INNODB;
 
 -- User related entries
-INSERT INTO users(UserName, Password) VALUES("jupiter", ";%Zns&m3Tv");
-INSERT INTO users(UserName, Password) VALUES("romanholiday", "Lb5Z\H$2a=");
-INSERT INTO users(UserName, Password) VALUES("cauliflower", "/a9^D$zX`+");
-INSERT INTO users(UserName, Password) VALUES("tangerine", "MEdR>5'Gb`");
+INSERT INTO users(UserName, Password, Email, FirstName, LastName) VALUES
+    ("jupiter", ";%Zns&m3Tv", "ashley_bradtke21@hotmail.com", "Ashley", "Bradtke"),
+    ("romanholiday", "Lb5Z\H$2a=", "evan_ondricka@hotmail.com", "Evan", "Odrick"),
+    ("cauliflower", "/a9^D$zX`+", "nya.yundt54@gmail.com", "Anthony", "Hubbert"),
+    ("tangerine", "MEdR>5'Gb`", "clementine10@hotmail.com", "Clementine", "Greer");
 
 -- Task related entries
 INSERT INTO Tasks(Title, Description, AccountID, Status, EntryDate, DueDate) VALUES

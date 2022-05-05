@@ -10,15 +10,18 @@ CREATE TABLE Users(
 	uID INT NOT NULL AUTO_INCREMENT,
 	UserName VARCHAR(50) NOT NULL UNIQUE ,
 	Password VARCHAR(50) NOT NULL,
+	Email VARCHAR(100) NOT NULL,
+	FirstName VARCHAR(50) NOT NULL,
+	LastName VARCHAR(50) NOT NULL,
 	PRIMARY KEY(uID)
 ) ENGINE=INNODB;
 
 CREATE TABLE Tasks(
 	tID INT NOT NULL AUTO_INCREMENT,
-	Title VARCHAR(80),
+	Title VARCHAR(80) NOT NULL,
 	Description VARCHAR(4000),
 	AccountID INT NOT NULL,
-	Status ENUM('Not-Started', 'In-Progress', 'Done', 'OverDue'),
+	Status ENUM('Not-Started', 'In-Progress', 'Done', 'OverDue') NOT NULL,
 	EntryDate DATE,
 	DueDate DATE,
 	PRIMARY KEY(tID),

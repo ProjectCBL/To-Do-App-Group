@@ -11,8 +11,8 @@
             Database::__construct();
         }
 
-        function getAllUserTasks($username){
-            $id = $this->grabQueryResults("SELECT * FROM Users WHERE UserName='{$username}'");
+        function getAllUserTasks($userName){
+            $id = $this->grabQueryResults("SELECT * FROM Users WHERE UserName='{$userName}'");
             $id = $id->fetch_assoc()["uID"];
             return $this->grabQueryResults(
                 "SELECT " . 
@@ -26,8 +26,8 @@
             );
         }
 
-        function getUserRow($username){
-            $sql = "SELECT * FROM Users WHERE UserName='" . $username . "'";
+        function getUserRow($userName){
+            $sql = "SELECT * FROM Users WHERE UserName='" . $userName . "'";
             return $this->grabQueryResults($sql)->fetch_assoc();
         }
 
@@ -41,13 +41,36 @@
             return $this->grabQueryResults($sql);
         }
 
-        function isUserInDB($username){
-            $sql = "SELECT * FROM Users WHERE UserName='{$username}'";
+        function insertNewUser($userName, $password, $email, $firstName, $lastName){
+            $sql = "INSERT Users(UserName, Password, Email, FirstName, LastName) VALUES(
+                '{$userName}',
+                '{$password}',
+                '{$email}',
+                '{$firstName}',
+                '{$lastName}'
+            )";
+            return $this->executeQuery($sql);
+        }
+
+        function insertNewTask($title, $description, $accountId, $status, $entryDate, $dueDate){
+            $sql = "INSERT Tasks(Title, Description, AccountID, Status, EntryDate, DueDate) VALUES(
+                '{$title}',
+                '{$description}',
+                {$accountId},
+                '{$status}',
+                '{$entryDate}',
+                '{$dueDate}'
+            )";
+            return $this->executeQuery($sql);
+        }
+
+        function isUserInDB($userName){
+            $sql = "SELECT * FROM Users WHERE UserName='{$userName}'";
             return mysqli_num_rows($this->grabQueryResults($sql)) > 0;
         }
 
-        function doAccountDetailsMatch($username, $password){
-            $sql = "SELECT * FROM Users WHERE UserName='{$username}' AND Password='{$password}'";
+        function doAccountDetailsMatch($userName, $password){
+            $sql = "SELECT * FROM Users WHERE UserName='{$userName}' AND Password='{$password}'";
             return mysqli_num_rows($this->grabQueryResults($sql)) > 0;
         }
 

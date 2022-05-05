@@ -69,8 +69,10 @@
 
         // Use this function to directly affect database.
         public function executeQuery($sql){
-            $queryResult = ($this->_conn->query($sql) == TRUE) ? "SQL Query: {$sql} Executed!!!" : "Error performing query: {$this->_conn->error}";
-            echo '<script>console.log("' . $queryResult . '");</script>'; 
+            $queryResult = $this->_conn->query($sql);
+            $queryResponse = ($queryResult) ? "SQL Query: Executed!!!" : "Error: {$this->_conn->error}";
+            echo '<script>console.log("' . $queryResponse . '");</script>';
+            return $queryResult;
         }
 
         // Obtaining data through SELECT statements

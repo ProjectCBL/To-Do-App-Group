@@ -64,7 +64,8 @@
 
     // retrieve information from DB
     // replace with proper SQL query
-    $query = "SELECT * FROM tasks WHERE tasks.uID = " . $uID . "";
+    $getuID = "SELECT uID FROM users WHERE users.username = " . $user . "";
+    $query = "SELECT * FROM tasks WHERE tasks.uID = " . $getuID . "";
 
     // prints rows of DB
     while ($row = mysqli_fetch_assoc($query)) {

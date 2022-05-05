@@ -2,20 +2,20 @@ $(document).ready(function(){
 
     $("#login").click(function(){
 
-        let username = $("#username").val();
-        let password = $("#pass").val();
+        const data = {
+            username : $("#username").val(),
+            password : $("#pass").val()
+        };
         
-        if (username.length == 0 || password.length == 0){
+        if (data.username.length == 0 || data.password.length == 0){
             $("#invalid").html("Missing field, please correct...");
         }
         else{
-            
-            let dataParameters = `username=${username}&password=${password}`;
 
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: "../Services/Login/login.php",
-                data: dataParameters,
+                data: data,
                 cache: false,
                 success: (data)=>{
                     console.log(data);

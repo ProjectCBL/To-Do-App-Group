@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign Up</title>
+  <link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        crossorigin="anonymous">
+  <link href="../css/signup.css" rel="stylesheet">
+</head> 
+
+<body id="body">
+<br> <h1>Sign Up</h1> <br><br>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+
+      <form id="sign-up-content"> 
+        <div class="form-group">
+          <label for="firstname">First Name:</label><br>
+          <input type="text" name="firstname" placeholder="First Name" id="fname" class="form-control" required>
+        </div>
+
+        <div class="form-group">    
+          <label for="lastname">Last Name:</label><br>
+          <input type="text" name="lastname" placeholder="Last Name" id="lname" class="form-control" required>
+        </div> 
+
+        <div class="form-group">
+            <label for="email">Email:</label><br>
+            <input type="email" name="email" placeholder="Email" id="email" class="form-control" required>
+          </div>
+
+        <div class="form-group">
+            <label for="username">Username:</label><br>
+            <input type="text" name="username" placeholder="Username" id="username" class="form-control" required>
+          </div>
+  
+          <div class="form-group">    
+            <label for="password">Password:</label><br>
+            <input type="password" name="password" placeholder="Password" id="pass" class="form-control" required>
+          </div> 
+        
+          <p id="invalid" style="color: red;"></p>
+
+        <br>
+        <button type="button" id="sign-up" class="btn btn-primary"> Sign Up </button><br>
+        or <br> <a id="login-redirect" href="">Login</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+<br><br><br>
+   
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="../js/sign-up-actions.js"></script>
+</body>
+
+</html>

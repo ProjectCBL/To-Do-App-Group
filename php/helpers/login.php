@@ -1,6 +1,6 @@
 <?php
 
-    include('../Database/todo_db.php');
+    include 'todo_db.php';
 
     $todoDB->connect();
 
@@ -8,7 +8,7 @@
     $password = $_POST["password"];
 
     if($todoDB->doAccountDetailsMatch($username, $password)){
-        require_once('../../Pages/todo.html');
+        require_once('../../html/todo.html');
     }
     else{
         echo "Login Error!!";

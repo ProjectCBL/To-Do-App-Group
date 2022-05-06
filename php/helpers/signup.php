@@ -1,6 +1,6 @@
 <?php
 
-    include("../Database/todo_db.php");
+    include 'todo_db.php';
 
     $todoDB->connect();
 
@@ -16,7 +16,7 @@
         echo "Account Creation Error!!";
     }
     else{
-        require_once("../../Pages/Success.html");
+        require_once("../../html/login.html");
     }
 
     $todoDB->close();

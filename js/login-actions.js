@@ -14,7 +14,7 @@ $(document).ready(function(){
 
             $.ajax({
                 type: "POST",
-                url: "../Services/Login/login.php",
+                url: "../php/helpers/login.php",
                 data: data,
                 cache: false,
                 success: (data)=>{
@@ -35,7 +35,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "GET",
-            url: "../Services/Login/signup_redirect.php",
+            url: "../php/redirects/signup_redirect.php",
             success: (data)=>{$("#body").html(data);}
         });
 

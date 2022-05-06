@@ -8,7 +8,7 @@
     $password = $_POST["password"];
 
     if($todoDB->doAccountDetailsMatch($username, $password)){
-        require_once('../../Pages/Success.html');
+        require_once('../../Pages/todo.html');
     }
     else{
         echo "Login Error!!";

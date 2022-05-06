@@ -23,7 +23,7 @@ $(document).ready(function(){
             success: (data)=>{
                 console.log(data);
                 (data.includes("Account Creation Error!!")) ? 
-                    $("#invalid").html("Account username already exists.") : 
+                    $("#invalid").html("Username already exists...") : 
                     $("#body").html(data);
             }
         });

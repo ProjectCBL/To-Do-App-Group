@@ -16,13 +16,12 @@
             $id = $id->fetch_assoc()["uID"];
             return $this->grabQueryResults(
                 "SELECT " . 
-                "u.UserName, " .
-                "t.Title, " . 
-                "t.Description, " .
-                "t.Status, " . 
-                "t.EntryDate, ". 
-                "t.DueDate " .
-                "FROM Users u INNER JOIN Tasks t ON t.AccountID='{$id}'"
+                "Title, " . 
+                "Description, " .
+                "Status, " . 
+                "EntryDate, ". 
+                "DueDate " .
+                "FROM Tasks WHERE AccountID='{$id}'"
             );
         }
 

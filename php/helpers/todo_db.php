@@ -12,10 +12,10 @@
         }
 
         function getAllUserTasks($userName){
-            $id = $this->grabQueryResults("SELECT * FROM Users WHERE UserName='{$userName}'");
-            $id = $id->fetch_assoc()["uID"];
+            $id = $this->getUserId($userName);
             return $this->grabQueryResults(
                 "SELECT " . 
+                "tID," .
                 "Title, " . 
                 "Description, " .
                 "Status, " . 
@@ -23,6 +23,16 @@
                 "DueDate " .
                 "FROM Tasks WHERE AccountID='{$id}'"
             );
+        }
+
+        function getUserId($userName){
+            $query = $this->grabQueryResults("SELECT * FROM Users WHERE UserName='{$userName}'");
+            $id = $query->fetch_assoc()["uID"];
+            return $id;
+        }
+
+        function getTask($taskId){
+            return $this->grabQueryResults("SELECT * FROM Tasks WHERE tID='{$taskId}'");
         }
 
         function getUserRow($userName){

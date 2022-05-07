@@ -84,7 +84,8 @@
 
         // Closes connection to database
         public function close(){
-            mysqli_close($this->_conn);
+            if($this->_conn != null) mysqli_close($this->_conn);
+            $this->_conn = null;
         }
 
     }

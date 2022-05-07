@@ -10,7 +10,7 @@
   
 </head> 
 <body id="body">
-
+    
 <div class="container-fluid">
     <div class="row">
         <nav class="navbar navbar-expand-md
@@ -78,29 +78,55 @@
                 <form action="" class="form-container" method="POST">
                     <h2>Add Task</h2> <br> 
                 
-                    <h4 for="title">Task:</h4>
-                    <input type="text" id="title" name="task" class="form-control" style="width: 100%;" required>    
+                    <?php
+                        
+                        include_once('../helpers/todo_db.php');
+
+                        session_start();
+                        
+                        $username = $_SESSION["username"];
+                        $id = $_GET["tID"];
+
+                        $todoDB->connect();
+
+                        $row = mysqli_fetch_assoc($todoDB->getTask($id));
+
+                        echo '<h4 for="title">Task:</h4>';
+                        echo '<input type="text" id="title" name="task" class="form-control" style="width: 100%;" required>';
+
+                        echo "<script>$('#title').attr('value', '" . $row["Title"] . "');</script>";
+                        
+                        echo '<br> <br>';
+
+                        echo '<h4>Description:</h4>'; 
+                        echo '<textarea class="form-control" id="description" name="description" rows="3" style="width: 100%;"></textarea> <br> <br>';
+
+                        echo "<script>$('#description').append('" . $row["Description"] . "');</script>";
+
+                        echo '<h4>Status:</h4>';
+                        echo '<select class="form-control" style="width: 100%;" id="status" name="status">
+                            <option>Not-Started</option>
+                            <option>In-Progress</option>
+                            <option>Done</option>
+                            <option>OverDue</option>
+                        </select>';
+
+                        echo "<script>$('#status').attr('value', '" . $row["Status"] . "');</script>";
+
+                        echo '<br> <br>';
+
+                        echo '<h4 >Date & Time:</h4>'; 
+                        echo '<input id="due-date" type="date" name="dateTime" class="form-control" style="width: 100%;"> <br> <br>';
+
+                        echo "<script>$('#due-date').val('" . $row["DueDate"] . "');</script>";
+
+                        $todoDB->close();
+
+                        echo '<button id="update-task' . $id . '" type="submit" name="submit" class="btn">Update</button>';
+                        echo '<button id="cancel" type="button" class="btn cancel">Cancel</button>';
+
+                    ?>
                     
-                    <br> <br>
-
-                    <h4>Description:</h4> 
-                    <textarea class="form-control" id="description" name="description" rows="3" style="width: 100%;"></textarea> <br> <br>
-
-                    <h4>Status:</h4>
-                    <select class="form-control" style="width: 100%;" id="status" name="status">
-                        <option>Not-Started</option>
-                        <option>In-Progress</option>
-                        <option>Done</option>
-                        <option>OverDue</option>
-                    </select>
-
-                    <br> <br>
-
-                    <h4 >Date & Time:</h4> 
-                    <input id="due-date" type="date" name="dateTime" class="form-control" style="width: 100%;" required> <br> <br> 
-
-                    <button id="add" type="submit" name="submit" class="btn">Add Task</button> 
-                    <button type="button" class="btn cancel">Cancel</button>
 
                 </form>
             </div>
@@ -172,6 +198,6 @@ form {
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-<script src="../js/db-operations.js"></script>
+<script src="../../js/db-operations.js"></script>
 </body>
 </html>

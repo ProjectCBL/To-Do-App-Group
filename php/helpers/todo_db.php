@@ -67,9 +67,9 @@
                 '{$description}',
                 {$accountId},
                 '{$status}',
-                '{$entryDate}',
-                '{$dueDate}'
-            )";
+                '{$entryDate}', " . 
+                (($dueDate == "DEFAULT") ? "DEFAULT" : "'{$dueDate}'") .
+            ")";
             return $this->executeQuery($sql);
         }
 

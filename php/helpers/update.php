@@ -13,9 +13,9 @@
     $query = "UPDATE Tasks SET 
         Title='{$title}',
         Description='{$description}',
-        status='{$status}',
-        DueDate='{$dueDate}'
-    WHERE tID={$tId}";
+        status='{$status}'" . 
+        (($dueDate == "null") ? ", DueDate=DEFAULT(DueDate)" : ", DueDate='{$dueDate}'") .
+        "WHERE tID={$tId}";
 
     if($todoDB->executeQuery($query)){
         require_once("../pages/todo.php");

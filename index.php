@@ -5,6 +5,19 @@
 
 	session_start();
 
+    /*switch($_SESSION["url"]){
+        case "add":
+            require_once("../../html/addtask.html");
+            break;
+        case "update":
+        case "todo":
+            require_once("./php/pages/todo.php");
+            break;
+        default:
+            require_once('./html/login.html');
+            break;
+    }*/
+
     require_once('./html/login.html');
     
 ?>

@@ -13,7 +13,7 @@
     $dueDate = $_POST["dueDate"];
     $accountId = $todoDB->getUserId($_SESSION["username"]);
 
-    if($todoDB->insertNewTask($title, $description, $accountId, $status, date("Y-m-d"), $dueDate)){
+    if($todoDB->insertNewTask($title, $description, $accountId, $status, date("Y-m-d"), "DEFAULT")){
         require_once("../pages/todo.php");
     }
     else{

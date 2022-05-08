@@ -22,8 +22,8 @@ CREATE TABLE Tasks(
 	Description VARCHAR(4000),
 	AccountID INT NOT NULL,
 	Status ENUM('Not-Started', 'In-Progress', 'Done', 'OverDue') NOT NULL,
-	EntryDate DATE,
-	DueDate DATE,
+	EntryDate DATE DEFAULT NULL,
+	DueDate DATE DEFAULT NULL,
 	PRIMARY KEY(tID),
 	FOREIGN KEY(AccountID)
 	REFERENCES Users(uID)

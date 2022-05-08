@@ -84,6 +84,8 @@
 
                         session_start();
                         
+                        $_SESSION["url"] = "update";
+
                         $username = $_SESSION["username"];
                         $id = $_GET["tID"];
 
@@ -122,8 +124,11 @@
 
                         $todoDB->close();
 
-                        echo '<button id="update-task' . $id . '" type="submit" name="submit" class="btn">Update</button>';
-                        echo '<button id="cancel" type="button" class="btn cancel">Cancel</button>';
+                        echo '<div class="d-flex">';
+                        echo '<button id="update-task' . $id . '" type="button" class="btn btn-success" style="margin: 1%;">Update</button>';
+                        echo '<button id="cancel" type="button" class="btn btn-info" style="margin: 1%;">Cancel</button>';
+                        echo '<button id="delete' . $id . '" type="button" class="btn cancel" style="margin: 1%;">Delete</button>';
+                        echo '</div>';
 
                     ?>
                     
@@ -163,9 +168,7 @@ form {
     width: 25%;
 }
 
-
-
-.btn {
+/*.btn {
     background-color: #5bc15f;
     color: white;
     border: none;
@@ -173,7 +176,7 @@ form {
     padding: 7px 10px;
     margin-bottom: 10px;
    
-}
+}*/
 
 .form-container .cancel {
     background-color: red;
@@ -199,5 +202,6 @@ form {
         crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 <script src="../../js/db-operations.js"></script>
+<script src="../../js/login-actions.js"></script>
 </body>
 </html>

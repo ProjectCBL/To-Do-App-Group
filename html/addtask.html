@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="addtask.html">Add Tasks</a>
+                        <a class="nav-link" href="todo.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">Ongoing Tasks</a> <!-- add link -->
@@ -40,7 +40,7 @@
 
 <style>
    
-    nav {
+   nav {
         background-color: #e7e4f7;
     }
 
@@ -57,8 +57,8 @@
 
     a {
         display: block;
-        padding: 8px;
-        color: black;  
+        padding: 8px; 
+        color: black; 
     }
 
     body {
@@ -66,6 +66,77 @@
     }
 
 </style>
+
+<body>
+
+<div class="form-group">
+    <form action="" class="form-container" method="POST">
+        <h2>Add Task</h2> <br> 
+
+        <h4>Task:</h4>
+        <input type="text" name="task" class="form-control" required> <br> <br>
+
+        <h4>Date & Time:<h4> 
+        <input id="text" type="datetime-local" name="dateTime" class="form-control" required> <br> <br>
+        
+
+        <button type="submit" name="submit" class="btn">Add Task</button> 
+        <button type="button" class="btn cancel">Cancel</button>
+    </form>
+</div>
+
+<style>
+
+h2 {
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+  }
+
+h4 {
+    font-size: 20px;
+    color: white;
+}
+
+
+form {
+    padding: 30px 90px 30px 90px;
+    margin: auto;
+    
+    resize: vertical;
+    background: linear-gradient(90deg, #d5d1eb, #beb6f0, #d5d1eb);
+    border-radius: 4px;
+}
+
+.form-control {
+    
+    width: 25%;
+}
+
+
+
+.btn {
+    background-color: #5bc15f;
+    color: white;
+    border: none;
+    width: 100px;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+   
+}
+
+.form-container .cancel {
+    background-color: red;
+    color: white;
+    border: none;
+    width: 100px;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+}
+
+</style>
+
+</body>
    
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"

@@ -54,13 +54,15 @@
             //TODO: The following query needs to be fixed.  This will throw errors.
 
             // retrieves information from DB
-            /*$getuID = "SELECT uID FROM users WHERE users.username = " . $user . "";
+            $getuID = "SELECT uID FROM users WHERE users.username = " . $user . "";
             $query = "SELECT * FROM tasks WHERE tasks.uID = " . $getuID . "";
 
+            $result = $conn($conn, $query);
+
             // echos necessary rows of table
-            while ($row = mysqli_fetch_assoc($query)) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 echo $row["Title"] . " | " . $row["Description"] . " | " . $row["Status"] . " | " . $row["EntryDate"] . " | " . $row["DueDate"];
-            }*/
+            }
 
             // close connection to DB
             mysqli_close($conn);

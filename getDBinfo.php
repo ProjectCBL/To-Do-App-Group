@@ -8,7 +8,7 @@
             // replace with proper username and password
             $server = "localhost";
             $username = "root";
-            $password = "dasCAP1998";
+            $password = "fakePA$$WORD123";
             $database = "ToDo";
 
             // open connection to DB

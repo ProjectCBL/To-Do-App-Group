@@ -17,7 +17,7 @@
   <div class="container">
     <div class="row">
 
-      <form name = "form" method = "get"> 
+      <form name = "form" action = "getDBinfo.php" method = "POST"> 
         <div class="form-group">
           <label for="username">Username:</label><br>
           <input type="text" name="username" id="username" class="form-control" required>
@@ -25,49 +25,8 @@
 
         <div class="form-group">    
           <label for="password">Password:</label><br>
-          <input type="password" name="password" id="pass" class="form-control" required>
+          <input type="password" name="password" id="password" class="form-control" required>
         </div>
-
-        <?php
-
-            // DB information
-            // replace with proper username and password
-            $server = "localhost";
-            $username = "root";
-            $password = "password1";
-            $database = "ToDo";
-
-            // open connection to DB
-            $conn = new mysqli($server, $username, $password, $database);
-
-            if (!$conn) {
-            die("Connection to DB failed.");
-            }
-            else {
-            echo "Connected to DB!";
-            }
-
-            // gets submitted username and password
-            $user = $_GET["username"];
-            $pass = $_GET["password"];
-
-            //TODO: The following query needs to be fixed.  This will throw errors.
-
-            // retrieves information from DB
-            $getuID = "SELECT uID FROM users WHERE users.username = " . $user . "";
-            $query = "SELECT * FROM tasks WHERE tasks.uID = " . $getuID . "";
-
-            $result = $conn($conn, $query);
-
-            // echos necessary rows of table
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo $row["Title"] . " | " . $row["Description"] . " | " . $row["Status"] . " | " . $row["EntryDate"] . " | " . $row["DueDate"];
-            }
-
-            // close connection to DB
-            mysqli_close($conn);
-        
-        ?>
         
         <br>
         <button type="submit" value="submit" class="btn btn-primary">Sign In</button><br>

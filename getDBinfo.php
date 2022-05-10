@@ -40,7 +40,8 @@
             // echos necessary rows of table
             while ($row = mysqli_fetch_assoc($result)) {
                 echo $row["Title"] . " | " . $row["Description"] . " | " . $row["Status"] . " | " . $row["EntryDate"] . " | " . $row["DueDate"];
-            }
+                echo "<br/>";
+              }
 
             // close connection to DB
             mysqli_close($conn);

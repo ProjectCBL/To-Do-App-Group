@@ -8,7 +8,11 @@
             // replace with proper username and password
             $server = "localhost";
             $username = "root";
+<<<<<<< HEAD
             $password = "";
+=======
+            $password = "fakePA$$WORD123";
+>>>>>>> cf51452b7aeccec1c96be8587d75ea38d21c54be
             $database = "ToDo";
 
             // open connection to DB
@@ -40,8 +44,12 @@
             // echos necessary rows of table
             while ($row = mysqli_fetch_assoc($result)) {
                 echo $row["Title"] . " | " . $row["Description"] . " | " . $row["Status"] . " | " . $row["EntryDate"] . " | " . $row["DueDate"];
+<<<<<<< HEAD
                 echo "<br/>";
               }
+=======
+            }
+>>>>>>> cf51452b7aeccec1c96be8587d75ea38d21c54be
 
             // close connection to DB
             mysqli_close($conn);
@@ -51,4 +59,8 @@
 
         </body>
 
+<<<<<<< HEAD
         </html>
+=======
+        </html>
+>>>>>>> cf51452b7aeccec1c96be8587d75ea38d21c54be

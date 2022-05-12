@@ -1,5 +1,6 @@
 $(document).ready(function(){
 
+    // Sends form data to server to insert new user if no missing field
     $("#sign-up").click(function(){
 
         let content = {}
@@ -30,9 +31,10 @@ $(document).ready(function(){
         
     });
 
+    // Redirects the user from the sign up page to the login page
     $("#login-redirect").click(function(event){
 
-        event.preventDefault();     // Keeps the page from freshing back to home/login screen
+        event.preventDefault();
 
         $.ajax({
             type: "GET",

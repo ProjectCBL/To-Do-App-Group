@@ -8,21 +8,14 @@
             // replace with proper username and password
             $server = "localhost";
             $username = "root";
-<<<<<<< HEAD
             $password = "";
-=======
-            $password = "fakePA$$WORD123";
->>>>>>> cf51452b7aeccec1c96be8587d75ea38d21c54be
             $database = "ToDo";
 
             // open connection to DB
             $conn = new mysqli($server, $username, $password, $database);
 
             if (!$conn) {
-            die("Connection to DB failed.");
-            }
-            else {
-            echo "Connected to DB!";
+              die("Connection to DB failed.");
             }
 
             // gets submitted username and password
@@ -41,15 +34,57 @@
 
             $result = mysqli_query($conn, $query);
 
+            // how HTML appears on page
+
+            echo "<h1>TASKS</h1>";
+
             // echos necessary rows of table
             while ($row = mysqli_fetch_assoc($result)) {
-                echo $row["Title"] . " | " . $row["Description"] . " | " . $row["Status"] . " | " . $row["EntryDate"] . " | " . $row["DueDate"];
-<<<<<<< HEAD
-                echo "<br/>";
+              if (is_null($row["DueDate"])) {
+                echo
+                  "<h2>" . $row["Title"] . "<h2>";
               }
-=======
-            }
->>>>>>> cf51452b7aeccec1c96be8587d75ea38d21c54be
+              else {
+                echo
+                  "<h2>" . $row["Title"] . " is due on " . $row["DueDate"] . "!" . "</h2>";
+              }
+
+              echo "<br/>";
+
+              if (is_null($row["Description"]) and is_null($row["Entry Date"])) {
+                echo
+                  $row["Status"] . " is the current status.";
+              }
+              else if (is_null($row["Description"])) {
+                echo
+                  $row["Status"] . " is the current status.";
+                echo "<br/>";
+                echo
+                  "This task was created on " . $row["EntryDate"] . ".";
+              }
+              else if (is_null($row["EntryDate"])) {
+                echo
+                  $row["Status"] . " is the current status.";
+                echo "<br/>";
+                echo
+                  "To do this task: " . $row["Description"];
+              }
+              else {
+                echo
+                  $row["Status"] . " is the current status.";
+                echo "<br/>";
+                echo
+                  "This task was created on " . $row["EntryDate"] . ".";
+                echo "<br/>";
+                echo
+                  "To do this task: " . $row["Description"];
+              }
+
+              echo "<br/>";
+              echo "<h3>----</h3>";
+              echo "<br/>";
+
+              }
 
             // close connection to DB
             mysqli_close($conn);
@@ -57,10 +92,6 @@
         ?>
 
 
-        </body>
+</body>
 
-<<<<<<< HEAD
-        </html>
-=======
-        </html>
->>>>>>> cf51452b7aeccec1c96be8587d75ea38d21c54be
+</html>

@@ -75,6 +75,11 @@
             return $queryResult;
         }
 
+        public function getPreppedQuery($stmnt){
+            $stmnt = $this->_conn->prepare($stmnt);
+            return $stmnt;
+        }
+
         // Obtaining data through SELECT statements
         // This function returns all the rows associated to the SELECT statement.
         // Use "fetch_assoc" method to grab each row at a time.

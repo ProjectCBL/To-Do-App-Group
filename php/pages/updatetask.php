@@ -113,7 +113,7 @@
                             <option>OverDue</option>
                         </select>';
 
-                        echo "<script>$('#status').attr('value', '" . $row["Status"] . "');</script>";
+                        echo "<script>$('#status').val('" . $row["Status"] . "').change();</script>";
 
                         echo '<br> <br>';
 

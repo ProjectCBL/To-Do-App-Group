@@ -79,13 +79,14 @@ $(document).ready(function(){
 
         event.preventDefault(); 
 
+        console.log(data.dueDate);
+
         $.ajax({
             type: "POST",
             url: "../php/helpers/update.php",
             data: data,
             cache: false,
             success: (data)=>{
-                console.log(data);
                 (data.includes("Error!!")) ? 
                     alert("Error occurred updating record") : 
                     $("#body").html(data);
@@ -107,7 +108,6 @@ $(document).ready(function(){
             data: data,
             cache: false,
             success: (data)=>{
-                console.log(data);
                 (data.includes("Error!!")) ? 
                     alert("Error occurred deleting record") : 
                     $("#body").html(data);
@@ -124,7 +124,7 @@ $(document).ready(function(){
             title : $("#title").val(),
             description : $("#description").val(),
             status : $("#status").val(),
-            dueDate : $("#due-date").val()
+            dueDate : ($("#due-date").val() != '') ? $("#due-date").val() : "null"
         };
 
         event.preventDefault(); 
@@ -135,7 +135,6 @@ $(document).ready(function(){
             data: data,
             cache: false,
             success: (data)=>{
-                console.log(data);
                 (data.includes("Error!!")) ? 
                     alert("Error occurred updating record") : 
                     $("#body").html(data);

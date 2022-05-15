@@ -61,6 +61,13 @@
             return $this->executeQuery($sql);
         }
 
+        function insertPreppedNewUser($userName, $password, $email, $firstName, $lastName){
+            $sql = "INSERT Users(UserName, Password, Email, FirstName, LastName) VALUES(?,?,?,?,?)";
+            $stmnt = $this->getPreppedQuery($sql);
+            $stmnt->bind_param("sssss", $userName, $password, $email, $firstName, $lastName);
+            return $stmnt->execute();
+        }
+
         function insertNewTask($title, $description, $accountId, $status, $entryDate, $dueDate){
             $sql = "INSERT Tasks(Title, Description, AccountID, Status, EntryDate, DueDate) VALUES(
                 '{$title}',
@@ -68,9 +75,51 @@
                 {$accountId},
                 '{$status}',
                 '{$entryDate}', " . 
-                (($dueDate == "DEFAULT") ? "DEFAULT" : "'{$dueDate}'") .
+                (($dueDate == "null") ? "DEFAULT" : "'{$dueDate}'") .
             ")";
             return $this->executeQuery($sql);
+        }
+
+        function insertPreppedNewTask($title, $description, $accountId, $status, $entryDate, $dueDate){
+            if($dueDate != "null"){
+                return $this->insertPreppedNewTaskWithDueDate($title, $description, $accountId, $status, $entryDate, $dueDate);
+            }
+            return $this->insertPreppedNewTaskWithNoDueDate($title, $description, $accountId, $status, $entryDate);
+        }
+
+        function insertPreppedNewTaskWithDueDate($title, $description, $accountId, $status, $entryDate, $dueDate){
+            $sql = "INSERT Tasks(Title, Description, AccountID, Status, EntryDate, DueDate) VALUES(?,?,?,?,?,?)";
+            $stmnt = $this->getPreppedQuery($sql);
+            $stmnt->bind_param("ssssss", $title, $description, $accountId, $status, $entryDate, $dueDate);
+            return $stmnt->execute();
+        }
+
+        function insertPreppedNewTaskWithNoDueDate($title, $description, $accountId, $status, $entryDate){
+            $sql = "INSERT Tasks(Title, Description, AccountID, Status, EntryDate) VALUES(?,?,?,?,?)";
+            $stmnt = $this->getPreppedQuery($sql);
+            $stmnt->bind_param("sssss", $title, $description, $accountId, $status, $entryDate);
+            return $stmnt->execute();
+        }
+
+        function updatePreppedTask($tID, $title, $description, $status, $dueDate){
+            if($dueDate != "null"){
+                return $this->updatePreppedTaskWithDueDate($tID, $title, $description, $status, $dueDate);
+            }
+            return $this->updatePreppedTaskWithNoDueDate($tID, $title, $description, $status);
+        }
+
+        function updatePreppedTaskWithDueDate($tID, $title, $description, $status, $dueDate){
+            $sql = "UPDATE Tasks SET Title=?, Description=?, Status=?, DueDate=? WHERE tID=?";
+            $stmnt = $this->getPreppedQuery($sql);
+            $stmnt->bind_param("sssss", $title, $description, $status, $dueDate, $tID);
+            return $stmnt->execute();
+        }
+
+        function updatePreppedTaskWithNoDueDate($tID, $title, $description, $status){
+            $sql = "UPDATE Tasks SET Title=?, Description=?, Status=?, DueDate=NULL WHERE tID=?";
+            $stmnt = $this->getPreppedQuery($sql);
+            $stmnt->bind_param("ssss", $title, $description, $status, $tID);
+            return $stmnt->execute();
         }
 
         function isUserInDB($userName){

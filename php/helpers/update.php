@@ -10,14 +10,7 @@
     $status = $_POST["status"];
     $dueDate = $_POST["dueDate"];
 
-    $query = "UPDATE Tasks SET 
-        Title='{$title}',
-        Description='{$description}',
-        status='{$status}'" . 
-        (($dueDate == "null") ? ", DueDate=DEFAULT(DueDate)" : ", DueDate='{$dueDate}'") .
-        "WHERE tID={$tId}";
-
-    if($todoDB->executeQuery($query)){
+    if($todoDB->updatePreppedTask($tId, $title, $description, $status, $dueDate)){
         require_once("../pages/todo.php");
     }
     else{

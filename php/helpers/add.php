@@ -13,7 +13,9 @@
     $dueDate = $_POST["dueDate"];
     $accountId = $todoDB->getUserId($_SESSION["username"]);
 
-    if($todoDB->insertNewTask($title, $description, $accountId, $status, date("Y-m-d"), "DEFAULT")){
+    echo '<script>console.log("' . $dueDate . '");</script>';
+
+    if($todoDB->insertPreppedNewTask($title, $description, $accountId, $status, date("Y-m-d"), $dueDate)){
         require_once("../pages/todo.php");
     }
     else{

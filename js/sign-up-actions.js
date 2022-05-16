@@ -18,7 +18,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url: "../php/helpers/signup.php",
+            url: "../php/core/signup.php",
             data: content,
             cache: false,
             success: (data)=>{

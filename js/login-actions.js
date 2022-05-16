@@ -15,7 +15,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "../php/helpers/login.php",
+            url: "../php/core/login.php",
             data: data,
             cache: false,
             success: (data)=>{

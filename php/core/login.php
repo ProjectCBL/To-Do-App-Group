@@ -1,6 +1,6 @@
 <?php
 
-    include_once 'todo_db.php';
+    include_once('../helpers/todo_db.php');
 
     $todoDB->connect();
 
@@ -15,7 +15,7 @@
         session_start();
         $_SESSION["username"] = $username;
         $_SESSION["url"] = "todo";
-        require_once('../../php/pages/todo.php');
+        require_once('../pages/todo.php');
     }
     else{
         echo "Login Error!!";

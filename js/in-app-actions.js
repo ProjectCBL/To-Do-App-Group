@@ -9,7 +9,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "GET",
-            url: "../php/helpers/logout.php",
+            url: "../php/core/logout.php",
             success: (data)=>{$("#body").html(data);}
         });
 
@@ -83,7 +83,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "../php/helpers/update.php",
+            url: "../php/core/update.php",
             data: data,
             cache: false,
             success: (data)=>{
@@ -104,7 +104,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "../php/helpers/delete.php",
+            url: "../php/core/delete.php",
             data: data,
             cache: false,
             success: (data)=>{
@@ -131,7 +131,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "../php/helpers/add.php",
+            url: "../php/core/add.php",
             data: data,
             cache: false,
             success: (data)=>{

@@ -8,10 +8,10 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
         crossorigin="anonymous">
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-  <script src="../js/in-app-actions.js"></script>
+  <script src="../../js/in-app-actions.js"></script>
 </head> 
 <body id="body">
-
+    
 <div class="container-fluid">
     <div class="row">
         <nav class="navbar navbar-expand-md
@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link">Home</a>
+                        <a class="nav-link" href="todo.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">Ongoing Tasks</a> <!-- add link -->
@@ -79,48 +79,66 @@
                 <form action="" class="form-container" method="POST">
                     <h2>Add Task</h2> <br> 
                 
-                    <h4 for="title">Task:</h4>
-                    <input type="text" id="title" name="task" class="form-control" style="width: 100%;" required>    
+                    <?php
+                        
+                        include_once('../helpers/todo_db.php');
+
+                        session_start();
+                        
+                        $_SESSION["url"] = "update";
+
+                        $username = $_SESSION["username"];
+                        $id = $_GET["tID"];
+
+                        $todoDB->connect();
+
+                        $row = mysqli_fetch_assoc($todoDB->getTask($id));
+
+                        echo '<h4 for="title">Task:</h4>';
+                        echo '<input type="text" id="title" name="task" class="form-control" style="width: 100%;" required>';
+
+                        echo "<script>$('#title').attr('value', '" . $row["Title"] . "');</script>";
+                        
+                        echo '<br> <br>';
+
+                        echo '<h4>Description:</h4>'; 
+                        echo '<textarea class="form-control" id="description" name="description" rows="3" style="width: 100%;"></textarea> <br> <br>';
+
+                        echo "<script>$('#description').append('" . $row["Description"] . "');</script>";
+
+                        echo '<h4>Status:</h4>';
+                        echo '<select class="form-control" style="width: 100%;" id="status" name="status">
+                            <option>Not-Started</option>
+                            <option>In-Progress</option>
+                            <option>Done</option>
+                            <option>OverDue</option>
+                        </select>';
+
+                        echo "<script>$('#status').val('" . $row["Status"] . "').change();</script>";
+
+                        echo '<br> <br>';
+
+                        echo '<h4 >Date & Time:</h4>'; 
+                        echo '<input id="due-date" type="date" name="dateTime" class="form-control" style="width: 100%;"> <br> <br>';
+
+                        echo "<script>$('#due-date').val('" . $row["DueDate"] . "');</script>";
+
+                        $todoDB->close();
+
+                        echo '<div class="d-flex">';
+                        echo '<button id="update-task' . $id . '" type="button" class="btn btn-success" style="margin: 1%;">Update</button>';
+                        echo '<button id="cancel" type="button" class="btn btn-info" style="margin: 1%;">Cancel</button>';
+                        echo '<button id="delete' . $id . '" type="button" class="btn cancel" style="margin: 1%;">Delete</button>';
+                        echo '</div>';
+
+                    ?>
                     
-                    <br> <br>
-
-                    <h4>Description:</h4> 
-                    <textarea class="form-control" id="description" name="description" rows="3" style="width: 100%;"></textarea> <br> <br>
-
-<<<<<<< HEAD
-        <h4>Description:</h4>
-        <input type="text" name="task" class="form-control" required> <br> <br>
-
-        <h4>Date & Time:<h4> 
-        <input id="text" type="datetime-local" name="dateTime" class="form-control" required> <br> <br>
-        
-
-        <button type="submit" name="submit" class="btn">Add</button> 
-        <button type="button" class="btn cancel">Cancel</button>
-    </form>
-=======
-                    <h4>Status:</h4>
-                    <select class="form-control" style="width: 100%;" id="status" name="status">
-                        <option>Not-Started</option>
-                        <option>In-Progress</option>
-                        <option>Done</option>
-                        <option>OverDue</option>
-                    </select>
-
-                    <br> <br>
-
-                    <h4 >Date & Time:</h4> 
-                    <input id="due-date" type="date" name="dateTime" class="form-control" style="width: 100%;" required> <br> <br> 
-
-                    <button id="add" type="submit" name="submit" class="btn">Add Task</button> 
-                    <button id="cancel" type="button" class="btn cancel">Cancel</button>
 
                 </form>
             </div>
         </div>
         <div class="col"/>
     </div>
->>>>>>> 83efdbaf1c4fa5df819ba1952fbfa4cfbe26fede
 </div>
 
 <style>
@@ -147,12 +165,11 @@ form {
 }
 
 .form-control {
+    
     width: 25%;
 }
 
-
-
-.btn {
+/*.btn {
     background-color: #5bc15f;
     color: white;
     border: none;
@@ -160,7 +177,7 @@ form {
     padding: 7px 10px;
     margin-bottom: 10px;
    
-}
+}*/
 
 .form-container .cancel {
     background-color: red;

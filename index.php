@@ -7,14 +7,12 @@
 
     /*switch($_SESSION["url"]){
         case "add":
-            require_once("../../html/addtask.html");
-            break;
         case "update":
         case "todo":
-            require_once("./php/pages/todo.php");
+            require_once(__DIR__ . "/php/pages/todo.php");
             break;
         default:
-            require_once('./html/login.html');
+            require_once(__DIR__ . '/html/login.html');
             break;
     }*/
 

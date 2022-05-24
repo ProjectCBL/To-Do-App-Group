@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     // Sends form data to server to insert new user if no missing field
-    $("#sign-up").click(function(){
+    $("#sign-up").unbind('click').click(function(){
 
         let content = {}
 
@@ -18,7 +18,7 @@ $(document).ready(function(){
         
         $.ajax({
             type: "POST",
-            url: "../php/core/signup.php",
+            url: "../php/service/signup.php",
             data: content,
             cache: false,
             success: (data)=>{
@@ -32,7 +32,7 @@ $(document).ready(function(){
     });
 
     // Redirects the user from the sign up page to the login page
-    $("#login-redirect").click(function(event){
+    $("#login-redirect").unbind('click').click(function(event){
 
         event.preventDefault();
 

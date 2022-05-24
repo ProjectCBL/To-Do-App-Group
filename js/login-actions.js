@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     // Send login info to server for comparison if field isn't missing
-    $("#login").click(function(){
+    $("#login").unbind('click').click(function(){
 
         const data = {
             username : $("#username").val(),
@@ -15,7 +15,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "POST",
-            url: "../php/core/login.php",
+            url: "../php/service/login.php",
             data: data,
             cache: false,
             success: (data)=>{
@@ -29,7 +29,7 @@ $(document).ready(function(){
     });
 
     // Redirects users to sign up page
-    $("#signup").click(function(event){
+    $("#signup").unbind('click').click(function(event){
 
         event.preventDefault();
 

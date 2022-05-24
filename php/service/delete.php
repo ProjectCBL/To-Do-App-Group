@@ -1,6 +1,8 @@
 <?php
 
-    include_once('../helpers/todo_db.php');
+    require_once(__DIR__ . "/../config/lib.php");
+
+    session_start();
 
     $todoDB->connect();
 
@@ -9,7 +11,8 @@
     $query = "DELETE FROM Tasks WHERE tID={$tId}";
 
     if($todoDB->executeQuery($query)){
-        require_once("../pages/todo.php");
+        $_SESSION["url"] = "all";
+        require_once("../redirects/todo_redirect.php");
     }
     else{
         echo "Error!!";

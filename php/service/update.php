@@ -1,6 +1,10 @@
 <?php
 
-    include_once('../helpers/todo_db.php');
+    require_once(__DIR__ . "/../config/lib.php");
+
+    session_start();
+
+    $_SESSION["url"] = "update";
 
     $todoDB->connect();
 
@@ -11,7 +15,7 @@
     $dueDate = $_POST["dueDate"];
 
     if($todoDB->updatePreppedTask($tId, $title, $description, $status, $dueDate)){
-        require_once("../pages/todo.php");
+        require_once("../redirects/todo_redirect.php");
     }
     else{
         echo "Error!!";

@@ -1,11 +1,16 @@
 <?php
 
-    include("../helpers/todo_db.php");
+    require_once(__DIR__ . "/../config/lib.php");
 
-    $todoDB->connect();
+    if (empty($_SESSION["url"])){
+        session_start();
+    }
 
-    require_once('../pages/todo.php?username=$_SESSION["username"]&url=$_SESSION["url"]');
+    $url = $_SESSION["url"];
 
-    $todoDB->close();
+    if($url = "add" || $url == "update"){
+        $_SESSION["url"] = "all";
+        include_once(__DIR__ . "/../service/retrieve_all.php"); 
+    }
 
 ?>

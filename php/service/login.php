@@ -1,6 +1,6 @@
 <?php
 
-    include_once('../helpers/todo_db.php');
+    require_once(__DIR__ . "/../config/lib.php");
 
     $todoDB->connect();
 
@@ -8,8 +8,6 @@
     $password = $_POST["password"];
 
     $isValid = $todoDB->doAccountDetailsMatch($username, $password);
-
-    $todoDB->close();
 
     if($isValid){
         session_start();
@@ -20,5 +18,7 @@
     else{
         echo "Login Error!!";
     }
+
+    $todoDB->close();
 
 ?>

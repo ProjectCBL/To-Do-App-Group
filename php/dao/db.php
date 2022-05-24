@@ -1,6 +1,6 @@
 <?php
 
-    include 'db_config.php';
+    //include '/php/helpers/db_config.php';
 
     class Database{
 

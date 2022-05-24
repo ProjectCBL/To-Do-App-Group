@@ -1,7 +1,5 @@
 <?php
 
-    include 'db.php';
-
     class ToDo extends Database{
 
         function __construct()
@@ -22,6 +20,34 @@
                 "EntryDate, ". 
                 "DueDate " .
                 "FROM Tasks WHERE AccountID='{$id}'"
+            );
+        }
+
+        function getAllIncompleteUserTasks($userName){
+            $id = $this->getUserId($userName);
+            return $this->grabQueryResults(
+                "SELECT " . 
+                "tID," .
+                "Title, " . 
+                "Description, " .
+                "Status, " . 
+                "EntryDate, ". 
+                "DueDate " .
+                "FROM Tasks WHERE AccountID='{$id}' AND status != 'Done'"
+            );
+        }
+
+        function getAllCompleteUserTasks($userName){
+            $id = $this->getUserId($userName);
+            return $this->grabQueryResults(
+                "SELECT " . 
+                "tID," .
+                "Title, " . 
+                "Description, " .
+                "Status, " . 
+                "EntryDate, ". 
+                "DueDate " .
+                "FROM Tasks WHERE AccountID='{$id}' AND status = 'Done'"
             );
         }
 
@@ -135,5 +161,3 @@
     } 
 
     $todoDB = new ToDo();
-
-?>

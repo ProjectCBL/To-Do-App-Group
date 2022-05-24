@@ -1,6 +1,6 @@
 <?php
 
-    include('../helpers/todo_db.php');
+    require_once(__DIR__ . "/../config/lib.php");
 
     $todoDB->connect();
 

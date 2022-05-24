@@ -5,17 +5,26 @@
 
 	session_start();
 
-    /*switch($_SESSION["url"]){
-        case "add":
-        case "update":
-        case "todo":
-            require_once(__DIR__ . "/php/pages/todo.php");
-            break;
-        default:
-            require_once(__DIR__ . '/html/login.html');
-            break;
-    }*/
 
-    require_once('./html/login.html');
-    
+    if(!empty($_SESSION["url"])){
+
+        switch($_SESSION["url"]){
+            case "add":
+            case "update":
+            case "todo":
+            case "all":
+            case "complete":
+            case "incomplete":
+                require_once(__DIR__ . "/php/pages/todo.php");
+                break;
+            default:
+                require_once(__DIR__ . '/html/login.html');
+                break;
+        }
+
+    }
+    else{
+        require_once('./html/login.html');
+    }
+
 ?>

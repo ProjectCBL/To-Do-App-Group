@@ -1,0 +1,82 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+.nav-right {
+    display: inline;
+    float: right;
+}
+
+.topnav a {
+    float: left;
+    text-align: center;
+}
+
+a {
+    padding: 8px;
+    color: black;
+}
+
+a:hover{
+    color: blue;
+}
+
+.navbar-brand.home:hover{
+    color: blue;
+    cursor: pointer;
+}
+
+body {
+    background: linear-gradient(90deg, #d5d1eb, #beb6f0, #d5d1eb);
+}
+
+h2 {
+    text-align: center;
+    color: white;
+    padding-top: 10px;
+}
+
+h4 {
+    font-size: 20px;
+    color: white;
+}
+
+form {
+    padding: 30px 90px 30px 90px;
+    margin: auto;
+
+    resize: vertical;
+    background: linear-gradient(90deg, #d5d1eb, #beb6f0, #d5d1eb);
+    border-radius: 4px;
+}
+
+.form-control {
+
+    width: 25%;
+}
+
+.btn {
+    background-color: #5bc15f;
+    color: white;
+    border: none;
+    width: 100px;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+   
+}
+
+.form-container .cancel {
+    background-color: red;
+    color: white;
+    border: none;
+    width: 100px;
+    padding: 7px 10px;
+    margin-bottom: 10px;
+}

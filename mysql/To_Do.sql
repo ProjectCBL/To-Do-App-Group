@@ -41,11 +41,15 @@ INSERT INTO users(UserName, Password, Email, FirstName, LastName) VALUES
 INSERT INTO Tasks(Title, Description, AccountID, Status, EntryDate, DueDate) VALUES
     ("Take Out the Trash", "Put it in the green bin.", 1, 'Not-Started', NOW(), NULL),
     ("Wash the Dishes", "Wash and dry.", 1, 'Done', NOW(), NULL),
+    ("Walk the dog", "Remember to bring the leash with you.", 1, 'Done', NOW(), NOW()),
+    ("Do homework!!!", "Chemistry, Algebra, .", 1, 'OverDue', NOW(), "2022-03-12"),
+    ("Grocery Shop", "Onions, Tomatoes, Ground Beef", 1, 'Done', "2022-04-15", NULL),
     ("Go Biking", NULL, 2, 'In-Progress', "2022-04-23", NULL),
     ("Mail Letter", "Go to post office and mail letter", 2, 'Not-Started', "2022-05-1", "2022-05-16"),
     ("Create Spreadsheat", NULL, 2, 'OverDue', "2022-03-12", "2022-03-12"),
     ("Bake Cookies", "Bake 2 batches of cookies", 3, 'In-Progress', "2022-04-23", "2022-04-26"),
     ("Wash the Dog", "Go to pet salon.", 4, 'Not-Started', "2022-03-12", "2022-04-27"),
     ("Pick Up Friend", NULL, 4, 'Not-Started', "2022-04-23", NULL);
+
 
 COMMIT;

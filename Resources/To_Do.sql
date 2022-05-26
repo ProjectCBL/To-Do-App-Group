@@ -7,38 +7,38 @@ CREATE DATABASE ToDo;
 USE ToDo;
 
 CREATE TABLE Users(
-	uID INT NOT NULL AUTO_INCREMENT,
-	UserName VARCHAR(50) NOT NULL UNIQUE ,
-	Password VARCHAR(50) NOT NULL,
-	Email VARCHAR(100) NOT NULL,
-	FirstName VARCHAR(50) NOT NULL,
-	LastName VARCHAR(50) NOT NULL,
-	PRIMARY KEY(uID)
+	`user_id` INT NOT NULL AUTO_INCREMENT,
+	`username` VARCHAR(50) NOT NULL UNIQUE ,
+	`password` VARCHAR(50) NOT NULL,
+	`email` VARCHAR(100) NOT NULL,
+	`first_name` VARCHAR(50) NOT NULL,
+	`last_name` VARCHAR(50) NOT NULL,
+	PRIMARY KEY(`user_id`)
 ) ENGINE=INNODB;
 
 CREATE TABLE Tasks(
-	tID INT NOT NULL AUTO_INCREMENT,
-	Title VARCHAR(80) NOT NULL,
-	Description VARCHAR(4000),
-	AccountID INT NOT NULL,
-	Status ENUM('Not-Started', 'In-Progress', 'Done', 'OverDue') NOT NULL,
-	EntryDate DATE DEFAULT NULL,
-	DueDate DATE DEFAULT NULL,
-	PRIMARY KEY(tID),
-	FOREIGN KEY(AccountID)
-	REFERENCES Users(uID)
+	`task_id` INT NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(80) NOT NULL,
+	`description` VARCHAR(4000),
+	`account_id` INT NOT NULL,
+	`status` ENUM('Not-Started', 'In-Progress', 'Done', 'OverDue') NOT NULL,
+	`entry_date` DATE DEFAULT NULL,
+	`due_date` DATE DEFAULT NULL,
+	PRIMARY KEY(`task_id`),
+	FOREIGN KEY(`account_id`)
+	REFERENCES Users(`user_id`)
 	ON DELETE CASCADE 
 ) ENGINE=INNODB;
 
 -- User related entries
-INSERT INTO users(UserName, Password, Email, FirstName, LastName) VALUES
+INSERT INTO users(`username`, `password`, `email`, `first_name`, `last_name`) VALUES
     ("jupiter", ";%Zns&m3Tv", "ashley_bradtke21@hotmail.com", "Ashley", "Bradtke"),
     ("romanholiday", "Lb5Z\H$2a=", "evan_ondricka@hotmail.com", "Evan", "Odrick"),
     ("cauliflower", "/a9^D$zX`+", "nya.yundt54@gmail.com", "Anthony", "Hubbert"),
     ("tangerine", "MEdR>5'Gb`", "clementine10@hotmail.com", "Clementine", "Greer");
 
 -- Task related entries
-INSERT INTO Tasks(Title, Description, AccountID, Status, EntryDate, DueDate) VALUES
+INSERT INTO Tasks(`title`, `description`, `account_id`, `status`, `entry_date`, `due_date`) VALUES
     ("Take Out the Trash", "Put it in the green bin.", 1, 'Not-Started', NOW(), NULL),
     ("Wash the Dishes", "Wash and dry.", 1, 'Done', NOW(), NULL),
     ("Walk the dog", "Remember to bring the leash with you.", 1, 'Done', NOW(), NOW()),

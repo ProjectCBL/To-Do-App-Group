@@ -130,9 +130,8 @@ public class ApplicationServiceImpl implements ApplicationService{
 			e.printStackTrace();
 		}
 		
-		return (req.getView().equals("all") ? getAllUserTask(req.getUserId()) :
-			(req.getView().equals("done") ? getAllCompletedUserTask(req.getUserId()) : 
-				getAllOngoingUserTask(req.getUserId())));
+		return (req.getView().equals("all") ? getAllUserTask(req.getUserId()) : (req.getView().equals("done") ? 
+				getAllCompletedUserTask(req.getUserId()) : getAllOngoingUserTask(req.getUserId())));
 		
 	}
 
@@ -147,9 +146,8 @@ public class ApplicationServiceImpl implements ApplicationService{
 			e.printStackTrace();
 		}
 		
-		return (req.getView().equals("all") ? getAllUserTask(req.getUserId()) :
-			(req.getView().equals("done") ? getAllCompletedUserTask(req.getUserId()) : 
-				getAllOngoingUserTask(req.getUserId())));
+		return (req.getView().equals("all") ? getAllUserTask(req.getUserId()) : (req.getView().equals("done") ? 
+				getAllCompletedUserTask(req.getUserId()) : getAllOngoingUserTask(req.getUserId())));
 		
 	}
 

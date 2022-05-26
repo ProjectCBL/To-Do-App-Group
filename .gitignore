@@ -1,0 +1,83 @@
+## STS
+
+/To-App-App-Spring/HELP.md
+/To-App-App-Spring/target/
+/To-App-App-Spring/!.mvn/wrapper/maven-wrapper.jar
+/To-App-App-Spring/!**/src/main/**/target/
+/To-App-App-Spring/!**/src/test/**/target/
+
+### STS ###
+/To-App-App-Spring/.apt_generated
+/To-App-App-Spring/.classpath
+/To-App-App-Spring/.factorypath
+/To-App-App-Spring/.project
+/To-App-App-Spring/.settings
+/To-App-App-Spring/.springBeans
+/To-App-App-Spring/.sts4-cache
+
+### IntelliJ IDEA ###
+/To-App-App-Spring/.idea
+/To-App-App-Spring/*.iws
+/To-App-App-Spring/*.iml
+/To-App-App-Spring/*.ipr
+
+### NetBeans ###
+/To-App-App-Spring/nbproject/private/
+/To-App-App-Spring/nbbuild/
+/To-App-App-Spring/dist/
+/To-App-App-Spring/nbdist/
+/To-App-App-Spring/.nb-gradle/
+/To-App-App-Spring/build/
+/To-App-App-Spring/!**/src/main/**/build/
+/To-App-App-Spring/!**/src/test/**/build/
+
+### VS Code ###
+/To-App-App-Spring/.vscode/
+
+/.metadata/
+/Servers/
+
+### Angular
+
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
+/To-Do-App-Angular/dist
+/To-Do-App-Angular/tmp
+/To-Do-App-Angular/out-tsc
+/To-Do-App-Angular/bazel-out
+
+# Node
+/To-Do-App-Angular/node_modules
+/To-Do-App-Angular/npm-debug.log
+/To-Do-App-Angular/yarn-error.log
+
+# IDEs and editors
+/To-Do-App-Angular/.idea/
+/To-Do-App-Angular/.project
+/To-Do-App-Angular/.classpath
+/To-Do-App-Angular/.c9/
+/To-Do-App-Angular/*.launch
+/To-Do-App-Angular/.settings/
+/To-Do-App-Angular/*.sublime-workspace
+
+# Visual Studio Code
+/To-Do-App-Angular/.vscode/*
+/To-Do-App-Angular/!.vscode/settings.json
+/To-Do-App-Angular/!.vscode/tasks.json
+/To-Do-App-Angular/!.vscode/launch.json
+/To-Do-App-Angular/!.vscode/extensions.json
+/To-Do-App-Angular/.history/*
+
+# Miscellaneous
+/To-Do-App-Angular/.angular/cache
+/To-Do-App-Angular/.sass-cache/
+/To-Do-App-Angular/connect.lock
+/To-Do-App-Angular/coverage
+/To-Do-App-Angular/libpeerconnection.log
+/To-Do-App-Angular/testem.log
+/To-Do-App-Angular/typings
+
+# System files
+/To-Do-App-Angular/.DS_Store
+/To-Do-App-Angular/Thumbs.db

@@ -13,6 +13,7 @@ import { BoardComponent } from './board/board.component';
 import { AllTaskItemsComponent } from './board/all-task-items/all-task-items.component';
 import { AllDoneTaskItemsComponent } from './board/all-done-task-items/all-done-task-items.component';
 import { AllOngoingTaskItemsComponent } from './board/all-ongoing-task-items/all-ongoing-task-items.component';
+import { TaskCardComponent } from './task-card/task-card.component';
 
 const routes: Routes = [
 	{ path: '', component: AccessComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
 		AllTaskItemsComponent,
 		AllDoneTaskItemsComponent,
 		AllOngoingTaskItemsComponent,
+  TaskCardComponent,
 	],
 	imports: [
 		BrowserModule,

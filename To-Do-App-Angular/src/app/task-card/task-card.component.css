@@ -1,0 +1,15 @@
+.incomplete{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    box-shadow: -5px 10px 25px rgb(65, 65, 65);
+    z-index: 3;
+}
+
+.fade-in{
+    
+}
+
+.completed{
+
+}

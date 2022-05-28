@@ -1,12 +1,40 @@
-<div>
-  <div class="card incomplete" style="width: 16rem; height: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-        content.</p>
+<div class="task-card">
+
+  <div class="flip-card slide-up-fade-in" (click)="toggleButtons()" id="flip">
+    <div class="flip-card-inner">
+      <div class="card flip-card-front">
+
+        <div class="card-body front-content">
+          <h4 class="card-title" [ngClass]="{complete : completed}">{{task.title}}</h4>
+        </div>
+        <div class="card-footer footer">
+          <div *ngIf="task.dueDate or task.dueDate != ''">
+            <a>Due Date: {{task.dueDate}}</a>
+          </div>
+          <a>Status: <a [style.color]="getTextColor()">{{task.status}}</a></a>
+        </div>
+
+      </div>
+      <div class="card flip-card-back">
+
+        <div class="card-body card-back-content" [ngClass]="{complete : completed}">
+          <div>
+            <a (click)="triggerUpdateEvent()"><i class="blue bi bi-list-ul icon-blue"></i></a>
+            <a (click)="triggerDeleteEvent()"><i class="red bi bi-x"></i></a>
+            <a (click)="toggleComplete()"><i class="green bi bi-check-lg"></i></a>
+          </div>
+          <hr>
+          <h5>{{task.description}}</h5>
+        </div>
+
+        <div class="card-footer footer">
+          <a>Entry Date: {{task.entryDate}}</a>
+        </div>
+
+      </div>
+
     </div>
-    <div class="card-footer">
-      Card footer
-    </div>
+
   </div>
+
 </div>

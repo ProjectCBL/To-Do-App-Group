@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+
+    <div class="container" style="margin-top: 3%;">
+        <div *ngFor="let taskSet of layout; let i = index">
+
+            <div *ngIf="taskSet.length == 3">
+                <div class="row justify-content-md-center mb-3">
+                    <div class="col col-lg-3 d-flex justify-content-center col-spacing">
+                        <app-task-card [task]="taskSet[0]"></app-task-card>
+                    </div>
+                    <div class="col col-lg-3 d-flex justify-content-center col-spacing">
+                        <app-task-card [task]="taskSet[1]"></app-task-card>
+                    </div>
+                    <div class="col col-lg-3 d-flex justify-content-center col-spacing">
+                        <app-task-card [task]="taskSet[2]"></app-task-card>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="taskSet.length == 2">
+                <div class="row justify-content-md-center mb-3">
+                    <div class="col col-lg-3 d-flex justify-content-center col-spacing">
+                        <app-task-card [task]="taskSet[0]"></app-task-card>
+                    </div>
+                    <div class="col col-lg-3 d-flex justify-content-center col-spacing">
+                        <app-task-card [task]="taskSet[1]"></app-task-card>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="taskSet.length == 1">
+                <div class="row justify-content-md-center mb-3">
+                    <div class="col col-lg-3 d-flex justify-content-center col-spacing">
+                        <app-task-card [task]="taskSet[0]"></app-task-card>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>

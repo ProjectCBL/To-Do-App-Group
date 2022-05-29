@@ -1,15 +1,60 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { AppService } from '../app.service';
+import { Task } from '../task';
+import * as $ from 'jquery';
+import { Router } from '@angular/router';
+import { RetrieveComponent } from './retrieve/retrieve.component';
 
 @Component({
-  selector: 'app-board',
-  templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+	selector: 'app-board',
+	templateUrl: './board.component.html',
+	styleUrls: ['./board.component.css']
 })
 export class BoardComponent implements OnInit {
 
-  constructor() { }
+	view:string="all";
+	editorType:string = "Update"
+	modalEditorTask:Task = new Task();
 
-  ngOnInit(): void {
-  }
+	constructor(private router:Router, private appService : AppService) { }
+
+	ngOnInit(): void {
+		localStorage.setItem("view", this.view);
+	}
+
+	showModalAddEditor(){
+		this.editorType = "Add";
+		this.resetTask();
+	}
+
+	showModalUpdateEditor(task:Task){
+		this.editorType = "Update";
+		this.transmitDataToModal(task);
+	}
+
+	transmitDataToModal(task:Task){
+		this.grabCardTask(task);
+	}
+
+	grabCardTask(task:Task){
+		this.modalEditorTask.taskId = task.taskId;
+		this.modalEditorTask.title = task.title;
+		this.modalEditorTask.description = task.description;
+		this.modalEditorTask.status = task.status;
+		this.modalEditorTask.entryDate = task.entryDate;
+		this.modalEditorTask.dueDate = task.dueDate;
+	}
+
+	updateView(){
+		localStorage.setItem("view", this.view);
+	}
+
+	resetTask(){
+		this.modalEditorTask = new Task();
+	}
+
+	logout(){
+		this.router.navigate(['']);
+	}
 
 }

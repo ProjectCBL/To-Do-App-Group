@@ -5,7 +5,7 @@
       <div class="card flip-card-front">
 
         <div class="card-body front-content">
-          <h4 class="card-title" [ngClass]="{complete : completed}">{{task.title}}</h4>
+          <h4 class="card-title" [ngClass]="{complete : task.status=='Done'}"><strong>{{task.title}}</strong></h4>
         </div>
         <div class="card-footer footer">
           <div *ngIf="task.dueDate or task.dueDate != ''">
@@ -17,9 +17,9 @@
       </div>
       <div class="card flip-card-back">
 
-        <div class="card-body card-back-content" [ngClass]="{complete : completed}">
+        <div class="card-body card-back-content" [ngClass]="{complete : task.status=='Done'}">
           <div>
-            <a (click)="triggerUpdateEvent()"><i class="blue bi bi-list-ul icon-blue"></i></a>
+            <a (click)="triggerUpdateEvent()" data-bs-toggle="modal" data-bs-target="#taskEditor"><i class="blue bi bi-list-ul icon-blue"></i></a>
             <a (click)="triggerDeleteEvent()"><i class="red bi bi-x"></i></a>
             <a (click)="toggleComplete()"><i class="green bi bi-check-lg"></i></a>
           </div>

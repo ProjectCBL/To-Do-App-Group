@@ -9,9 +9,10 @@ import { Task } from '../task';
 })
 export class TaskCardComponent implements OnInit {
 
+	@Input() statusConfig = {completed : false, previousStatus : null};
 	@Input() task: Task = new Task();
 	@Output() deleteTask = new EventEmitter<number>();
-	@Output() updateTask = new EventEmitter<number>();
+	@Output() updateTask = new EventEmitter<Task>();
 
 	previousStatus: string = "";
 	showButtons: boolean = false;
@@ -20,7 +21,7 @@ export class TaskCardComponent implements OnInit {
 	constructor(private appService: AppService) { }
 
 	ngOnInit(): void {
-		this.previousStatus = (this.task.status == "Done") ? "Not-Started" : "Done";
+		this.resetComplete();
 	}
 
 	triggerDeleteEvent() {
@@ -28,7 +29,7 @@ export class TaskCardComponent implements OnInit {
 	}
 
 	triggerUpdateEvent() {
-		this.deleteTask.emit(this.task.taskId);
+		this.updateTask.emit(this.task);
 	}
 
 	toggleButtons(): void {
@@ -36,9 +37,14 @@ export class TaskCardComponent implements OnInit {
 	}
 
 	toggleComplete() {
-		this.completed = !this.completed;
+		this.resetComplete();
 		this.previousStatus = [this.task.status, this.task.status = this.previousStatus][0];
 		this.updateStatus();
+	}
+
+	resetComplete(){
+		this.previousStatus = (this.task.status == "Done") ? "Not-Started" : "Done";
+		if(this.task.status == "Done") this.completed = true;
 	}
 
 	updateStatus() {
@@ -48,10 +54,10 @@ export class TaskCardComponent implements OnInit {
 
 		this.appService.updateTask(userId, this.task.taskId, this.task.title, this.task.description, this.task.status, this.task.dueDate, view).subscribe((response: any) => {
 			console.log("Updated Status");
+			if(this.task.status == 'Done') this.resetComplete();
 		},
 		(error)=>{
 			this.previousStatus = [this.task.status, this.task.status = this.previousStatus][0];
-			this.completed = !this.completed;
 			console.log("Failed to update status");
 		});
 

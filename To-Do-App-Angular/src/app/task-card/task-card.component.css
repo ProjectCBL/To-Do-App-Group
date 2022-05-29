@@ -57,6 +57,7 @@
   position: relative;
   top: 25%;
   z-index: 2;
+  font-family: 'Grape Nuts', cursive;
 }
 
 .footer {
@@ -112,7 +113,8 @@ a i:active {
 }
 
 .card-back-content h5{
-	font-size: 105%;
+	font-size: 110%;
+  font-family: 'Baloo Da 2', cursive;
 }
 
 .card-back-footer {

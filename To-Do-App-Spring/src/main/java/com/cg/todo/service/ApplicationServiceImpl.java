@@ -38,10 +38,16 @@ public class ApplicationServiceImpl implements ApplicationService{
 		return taskRepo.findById(id).get();
 	}
 	
-	private Date retrieveCorrectDate(String receivedDate) throws ParseException {
-		SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
-		Date date = dateFormatter.parse(receivedDate);
-		return date;
+	private Date retrieveCorrectDate(String receivedDate) {
+		try {
+			SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
+			Date date = dateFormatter.parse(receivedDate);
+			return date;
+		}
+		catch(ParseException e) {
+			return null;
+		}
+		
 	}
 	
 	@Override
@@ -96,7 +102,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 			newTask.setDescription(req.getDescription());
 			newTask.setStatus(req.getStatus());
 			newTask.setEntryDate(new Date());
-			newTask.setDueDate((req.getDueDate() != null) ? retrieveCorrectDate(req.getDueDate()) : null);
+			newTask.setDueDate((req.getDueDate() != null || req.getDueDate() != "") ? retrieveCorrectDate(req.getDueDate()) : null);
 			newTask.setUser(user);
 			
 			return taskRepo.save(newTask);

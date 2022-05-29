@@ -1,15 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { Task } from '../task';
 
 @Component({
-  selector: 'app-access',
-  templateUrl: './access.component.html',
-  styleUrls: ['./access.component.css']
+	selector: 'app-access',
+	templateUrl: './access.component.html',
+	styleUrls: ['./access.component.css']
 })
 export class AccessComponent implements OnInit {
 
-  constructor() { }
+	isLogin:boolean = true;
 
-  ngOnInit(): void {
-  }
+	constructor() { 
+		
+	}
+
+	ngOnInit(): void {
+	}
+
+	toggleAccess(){
+		this.isLogin = !this.isLogin;
+	}
 
 }

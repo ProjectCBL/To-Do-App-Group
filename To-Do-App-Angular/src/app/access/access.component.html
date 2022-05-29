@@ -1,3 +1,13 @@
-<div>
-    <app-task-card></app-task-card>
+<div [ngClass]="{'login-body' : isLogin, 'register-body' : !isLogin}">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-3 d-flex justify-content-center">
+          <h1><strong>Task Hub</strong></h1>
+        </div>
+      </div>
+    <div *ngIf="isLogin">
+        <app-login (switchToRegister)="toggleAccess()"></app-login>
+    </div>
+    <div *ngIf="!isLogin">
+        <app-register (switchToLogin)="toggleAccess()"></app-register>
+    </div>
 </div>

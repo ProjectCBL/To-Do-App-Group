@@ -1,0 +1,22 @@
+.register-body {
+  background: #decce7;
+  padding-right: 100px;
+  padding-left: 100px;
+  height: 100vh;
+}
+
+.login-body {
+  background: #9d95ca;
+  padding-right: 100px;
+  padding-left: 100px;
+  height: 100vh;
+}
+
+h1 {
+  position: relative;
+  margin-top: 12%;
+  font-size: 64px;
+  color: white;
+  text-shadow: 2px 2px 5px rgb(56, 56, 56);
+  font-family: 'Yellowtail', cursive;
+}

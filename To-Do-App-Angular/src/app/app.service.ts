@@ -47,7 +47,7 @@ export class AppService {
 		});
 	}
 
-	public deleteTask(userId:number, taskId:number, view:number): Observable<Task[]>{
+	public deleteTask(userId:number, taskId:number, view:string): Observable<Task[]>{
 		return this.httpClient.post<Task[]>('http://localhost:8080/to-do-app/deleteTask', {
 			"userId" : userId,
 			"taskId" : taskId,

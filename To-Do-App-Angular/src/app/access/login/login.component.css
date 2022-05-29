@@ -1,0 +1,48 @@
+h1 {
+  text-align: center;
+  color: white;
+  padding-bottom: 20px;
+}
+
+form {
+  padding: 30px 90px 30px 90px;
+  margin: auto;
+  text-align: center;
+  resize: vertical;
+  background: linear-gradient(90deg, #d5d1eb, #beb6f0, #d5d1eb);
+  border-radius: 4px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .3);
+  max-width: 26em;
+}
+
+#signup{
+  color: rgb(41, 72, 247);
+  text-decoration: underline;
+}
+
+#signup:hover{
+  color: rgb(25, 46, 167);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-form{
+  position: absolute;
+  right: 0%;
+  left: 0%;
+  top: 12%;
+}
+
+.entry-animation {
+  animation: fadeIn 1.25s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

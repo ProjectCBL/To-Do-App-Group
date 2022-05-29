@@ -10,13 +10,15 @@ import { AccessComponent } from './access/access.component';
 import { LoginComponent } from './access/login/login.component';
 import { RegisterComponent } from './access/register/register.component';
 import { BoardComponent } from './board/board.component';
-import { AllTaskItemsComponent } from './board/all-task-items/all-task-items.component';
-import { AllDoneTaskItemsComponent } from './board/all-done-task-items/all-done-task-items.component';
-import { AllOngoingTaskItemsComponent } from './board/all-ongoing-task-items/all-ongoing-task-items.component';
 import { TaskCardComponent } from './task-card/task-card.component';
+import { RetrieveComponent } from './board/retrieve/retrieve.component';
+import { ModalEditorComponent } from './board/modal-editor/modal-editor.component';
+import { AddButtonComponent } from './board/add-button/add-button.component';
+import { LogoutButtonComponent } from './board/logout-button/logout-button.component';
 
 const routes: Routes = [
 	{ path: '', component: AccessComponent },
+	{ path: 'access', component: AccessComponent },
 	{ path: 'board', component: BoardComponent }
 ]
 
@@ -27,10 +29,11 @@ const routes: Routes = [
 		LoginComponent,
 		RegisterComponent,
 		BoardComponent,
-		AllTaskItemsComponent,
-		AllDoneTaskItemsComponent,
-		AllOngoingTaskItemsComponent,
-  TaskCardComponent,
+		TaskCardComponent,
+		RetrieveComponent,
+		ModalEditorComponent,
+  AddButtonComponent,
+  LogoutButtonComponent,
 	],
 	imports: [
 		BrowserModule,

@@ -1,0 +1,19 @@
+.circle-btn {
+  position: fixed;
+  bottom: 10%;
+  left: 15%;
+  height: 5em;
+  width: 5em;
+  box-shadow: -2px 2px 20px rgb(109, 103, 114);
+  border-radius: 50%;
+  background-color: rgb(191, 134, 255);
+  border: 2px solid rgb(191, 134, 255);
+  z-index: 10;
+}
+
+.icon {
+  font-size: 205%;
+  position: absolute;
+  left: 28%;
+  top: 16%;
+}

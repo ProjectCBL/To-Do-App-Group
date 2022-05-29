@@ -1,15 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AppService } from 'src/app/app.service';
+import { User } from 'src/app/user';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+	selector: 'app-register',
+	templateUrl: './register.component.html',
+	styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+	@Output() switchToLogin = new EventEmitter();
 
-  ngOnInit(): void {
-  }
+	user: User = new User();
+
+	showError: boolean = false;
+	errorMessage: string = "";
+
+	constructor(private appService: AppService) { }
+
+	ngOnInit(): void {
+	}
+
+	registerUser() {
+
+		console.log("something");
+
+		if (this.user.firstName == '' || this.user.lastName == '' || this.user.email == '' || this.user.username == '' || this.user.password == '') {
+			console.log("something");
+			this.showError = true;
+			this.errorMessage = "Make sure to fill all fields...";
+			return;
+		}
+
+		this.appService.registerUser(this.user.firstName, this.user.lastName, this.user.email, this.user.username, this.user.password).subscribe((response: any) => {
+
+			if (response != null && response == true) {
+				alert("You have successfully registered, click ok to continue.");
+				this.switchToLogin.emit();
+			}
+
+		},
+			(error) => {
+				this.showError = true;
+				this.errorMessage = "That username already exists...";
+				return;
+			});
+
+	}
 
 }

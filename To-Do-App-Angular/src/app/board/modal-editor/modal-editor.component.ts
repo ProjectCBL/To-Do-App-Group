@@ -10,7 +10,8 @@ export class ModalEditorComponent implements OnInit {
 
 	@Input() editorType:string = "Update";
 	@Input() task: Task = new Task();
-	@Output() editorEvent = new EventEmitter<{task:Task, type:string}>();
+	@Output() editorUpdateEvent = new EventEmitter<{task:Task}>();
+	@Output() editorAddEvent = new EventEmitter<{task:Task}>();
 
 	constructor() { }
 
@@ -18,8 +19,12 @@ export class ModalEditorComponent implements OnInit {
 	}
 
 	emitEvent(){
-		console.log(this.task);
-		//this.editorEvent.emit({task:this.task, type:this.editorType});
+		if(this.editorType == "Update"){
+			this.editorUpdateEvent.emit({task:this.task});
+		}
+		else{
+			this.editorAddEvent.emit({task:this.task});
+		}
 	}
 
 }

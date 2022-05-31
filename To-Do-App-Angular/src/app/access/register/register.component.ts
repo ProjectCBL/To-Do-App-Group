@@ -12,7 +12,6 @@ export class RegisterComponent implements OnInit {
 	@Output() switchToLogin = new EventEmitter();
 
 	user: User = new User();
-
 	showError: boolean = false;
 	errorMessage: string = "";
 
@@ -23,10 +22,7 @@ export class RegisterComponent implements OnInit {
 
 	registerUser() {
 
-		console.log("something");
-
 		if (this.user.firstName == '' || this.user.lastName == '' || this.user.email == '' || this.user.username == '' || this.user.password == '') {
-			console.log("something");
 			this.showError = true;
 			this.errorMessage = "Make sure to fill all fields...";
 			return;
@@ -40,11 +36,11 @@ export class RegisterComponent implements OnInit {
 			}
 
 		},
-			(error) => {
-				this.showError = true;
-				this.errorMessage = "That username already exists...";
-				return;
-			});
+		(error) => {
+			this.showError = true;
+			this.errorMessage = "That username already exists...";
+			return;
+		});
 
 	}
 

@@ -1,9 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AppService } from '../app.service';
 import { Task } from '../task';
-import * as $ from 'jquery';
 import { Router } from '@angular/router';
-import { RetrieveComponent } from './retrieve/retrieve.component';
 
 @Component({
 	selector: 'app-board',
@@ -13,12 +10,15 @@ import { RetrieveComponent } from './retrieve/retrieve.component';
 export class BoardComponent implements OnInit {
 
 	view:string="all";
+	firstname:string = "";
 	editorType:string = "Update"
 	modalEditorTask:Task = new Task();
+	displayComponents:boolean = false;
 
-	constructor(private router:Router, private appService : AppService) { }
+	constructor(private router:Router) { }
 
 	ngOnInit(): void {
+		this.firstname = localStorage.getItem("firstname") as string;
 		localStorage.setItem("view", this.view);
 	}
 

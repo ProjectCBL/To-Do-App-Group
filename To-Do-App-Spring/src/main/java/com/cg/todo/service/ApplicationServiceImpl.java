@@ -47,7 +47,6 @@ public class ApplicationServiceImpl implements ApplicationService{
 		catch(ParseException e) {
 			return null;
 		}
-		
 	}
 	
 	@Override
@@ -102,7 +101,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 			newTask.setDescription(req.getDescription());
 			newTask.setStatus(req.getStatus());
 			newTask.setEntryDate(new Date());
-			newTask.setDueDate((req.getDueDate() != null || req.getDueDate() != "") ? retrieveCorrectDate(req.getDueDate()) : null);
+			newTask.setDueDate(retrieveCorrectDate(req.getDueDate()));
 			newTask.setUser(user);
 			
 			return taskRepo.save(newTask);
@@ -127,7 +126,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 			task.setTitle(req.getTitle());
 			task.setDescription(req.getDescription());
 			task.setStatus(req.getStatus());
-			task.setDueDate((req.getDueDate() != null) ? retrieveCorrectDate(req.getDueDate()) : null);
+			task.setDueDate(retrieveCorrectDate(req.getDueDate()));
 			
 			taskRepo.save(task);
 			

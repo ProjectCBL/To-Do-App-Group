@@ -10,9 +10,7 @@ export class AccessComponent implements OnInit {
 
 	isLogin:boolean = true;
 
-	constructor() { 
-		
-	}
+	constructor() { }
 
 	ngOnInit(): void {
 	}

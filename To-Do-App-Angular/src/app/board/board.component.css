@@ -17,6 +17,14 @@ h1 {
   font-family: 'Yellowtail', cursive;
 }
 
+h5 {
+  position: relative;
+  left: -2%;
+  color: white;
+  text-shadow: 2px 2px 5px rgb(56, 56, 56);
+  font-family: 'Yellowtail', cursive;
+}
+
 .filter-drop {
   background-color: transparent;
   outline: none;

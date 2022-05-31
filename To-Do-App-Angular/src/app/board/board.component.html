@@ -2,24 +2,34 @@
   <div class="container">
     <div class="row justify-content-md-center">
       <div class="col col-lg-3 d-flex justify-content-center">
-        <h1><strong>Task Hub</strong></h1>
+        <h1><strong>Task Hub</strong></h1> <br>
       </div>
     </div>
+
     <div class="row justify-content-md-center">
-      <div class="col col-lg-3 d-flex justify-content-center">
-        <select class="form-select filter-select" aria-label="Default select example" [(ngModel)]="view"
-          (ngModelChange)="retrieve.switchView(view)" (ngModelChange)="updateView()">
-          <option selected>Task Display</option>
-          <option value="all">All</option>
-          <option value="ongoing">Ongoing</option>
-          <option value="done">Completed</option>
-        </select>
+      <div class="col col-lg-4 d-flex justify-content-center">
+        <h5>Welcome back {{firstname}}, <br> here's what you got on the board!</h5>
       </div>
     </div>
+    
+      <div class="row justify-content-md-center">
+        <div class="col col-lg-3 d-flex justify-content-center">
+          <select class="form-select filter-select" aria-label="Default select example" [(ngModel)]="view"
+            (ngModelChange)="retrieve.switchView(view)" (ngModelChange)="updateView()">
+            <option selected>Task Display</option>
+            <option value="all">All</option>
+            <option value="ongoing">Ongoing</option>
+            <option value="done">Completed</option>
+          </select>
+        </div>
+      </div>
+    
   </div>
   <app-retrieve (updateTask)="showModalUpdateEditor($event)" #retrieve>
   </app-retrieve>
-  <app-modal-editor [task]="modalEditorTask" [editorType]="editorType" (editorUpdateEvent)="retrieve.updateTaskFromDB($event.task)" (editorAddEvent)="retrieve.addTaskToDB($event.task)"></app-modal-editor>
+  <app-modal-editor [task]="modalEditorTask" [editorType]="editorType"
+    (editorUpdateEvent)="retrieve.updateTaskFromDB($event.task)" (editorAddEvent)="retrieve.addTaskToDB($event.task)">
+  </app-modal-editor>
   <div class="container">
     <app-add-button (click)="showModalAddEditor()"></app-add-button>
     <app-logout-button (click)="logout()"></app-logout-button>

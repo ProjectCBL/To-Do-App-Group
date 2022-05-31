@@ -1,11 +1,18 @@
-.retrieval{
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: space-between;
+.retrieval {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
-.col-spacing{
-    padding: 2px;
-    margin: 2px;
+.col-spacing {
+  padding: 2px;
+  margin: 2px;
+}
+
+h6 {
+  font-size: 110%;
+  position: relative;
+  font-family: 'Baloo Da 2', cursive;
+  left: -4%;
 }

@@ -30,7 +30,7 @@ export class RetrieveComponent implements OnInit {
 			this.layout = this.groupByThree(3, this.tasks);
 			localStorage.setItem("view", "all");
 		}, (error) => {
-
+			console.log(error);
 		});
 
 	}
@@ -44,7 +44,7 @@ export class RetrieveComponent implements OnInit {
 			this.layout = this.groupByThree(3, this.tasks);
 			localStorage.setItem("view", "done");
 		}, (error) => {
-
+			console.log(error);
 		});
 
 	}
@@ -58,7 +58,7 @@ export class RetrieveComponent implements OnInit {
 			this.layout = this.groupByThree(3, this.tasks);
 			localStorage.setItem("view", "ongoing");
 		}, (error) => {
-
+			console.log(error);
 		});
 
 	}
@@ -72,7 +72,6 @@ export class RetrieveComponent implements OnInit {
 
 		this.appService.addNewTask(userId, task.title, task.description, task.status, task.dueDate).subscribe((response:any)=>{
 			console.log("Added Card");
-			console.log(task);
 			if(this.layout.length == 0){
 				this.switchView(view);
 			}else{
@@ -95,8 +94,6 @@ export class RetrieveComponent implements OnInit {
 
 		let userId = localStorage.getItem("userId") as unknown as number;
 		let view = localStorage.getItem("view") as unknown as string;
-
-		console.log(task.taskId);
 
 		this.appService.updateTask(userId, task.taskId, task.title, task.description, task.status, task.dueDate, view).subscribe((response: any) => {
 			console.log("Updated Card");
@@ -160,6 +157,7 @@ export class RetrieveComponent implements OnInit {
 				this.retrieveAllTasks();
 				break;
 		}
+
 	}
 
 	/*Bug: There appears to be bug or some sort of side effect that occurs prior to this method

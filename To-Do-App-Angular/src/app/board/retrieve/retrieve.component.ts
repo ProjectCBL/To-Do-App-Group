@@ -27,6 +27,7 @@ export class RetrieveComponent implements OnInit {
 
 		this.appService.getAllUserTask(userId).subscribe((response: any) => {
 			this.tasks = response.map((task: any) => { 
+				if(task.dueDate != null) task.dueDate = new Date(task.dueDate.replace(/-/g, '\/')).toLocaleDateString();
 				task.entryDate = new Date(task.entryDate.replace(/-/g, '\/')).toLocaleDateString();
 				return this.mapToTask(task);
 			});
@@ -44,6 +45,7 @@ export class RetrieveComponent implements OnInit {
 
 		this.appService.getAllCompletedUserTask(userId).subscribe((response: any) => {
 			this.tasks = response.map((task: any) => { 
+				if(task.dueDate != null) task.dueDate = new Date(task.dueDate.replace(/-/g, '\/')).toLocaleDateString();
 				task.entryDate = new Date(task.entryDate.replace(/-/g, '\/')).toLocaleDateString();
 				return this.mapToTask(task);
 			});
@@ -61,6 +63,7 @@ export class RetrieveComponent implements OnInit {
 
 		this.appService.getAllOngoingUserTask(userId).subscribe((response: any) => {
 			this.tasks = response.map((task: any) => { 
+				if(task.dueDate != null) task.dueDate = new Date(task.dueDate.replace(/-/g, '\/')).toLocaleDateString();
 				task.entryDate = new Date(task.entryDate.replace(/-/g, '\/')).toLocaleDateString();
 				return this.mapToTask(task); 
 			});
@@ -74,6 +77,11 @@ export class RetrieveComponent implements OnInit {
 
 	addTaskToDB(task:Task){
 
+		if(task.title.length == 0){
+			alert("Task Card was not created, make sure to include a title.");
+			return;
+		}
+
 		let date = new Date();
 		let userId = localStorage.getItem("userId") as unknown as number;
 		let view = localStorage.getItem("view") as unknown as string;
@@ -83,6 +91,9 @@ export class RetrieveComponent implements OnInit {
 
 		this.appService.addNewTask(userId, task.title, task.description, task.status, task.dueDate).subscribe((response:any)=>{
 			console.log("Added Card");
+
+			task.taskId = response.taskId;
+
 			if(this.layout.length == 0){
 				this.switchView(view);
 			}else{
@@ -95,6 +106,7 @@ export class RetrieveComponent implements OnInit {
 				}
 
 			}
+
 		}, (error)=>{
 			alert("Failed to update card, please try again later...");
 		});
@@ -103,8 +115,12 @@ export class RetrieveComponent implements OnInit {
 
 	updateTaskFromDB(task:Task){
 
+		console.log(task);
+
 		let userId = localStorage.getItem("userId") as unknown as number;
 		let view = localStorage.getItem("view") as unknown as string;
+
+		console.log(userId);
 
 		this.appService.updateTask(userId, task.taskId, task.title, task.description, task.status, task.dueDate, view).subscribe((response: any) => {
 			console.log("Updated Card");

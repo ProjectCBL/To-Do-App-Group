@@ -101,7 +101,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 			newTask.setDescription(req.getDescription());
 			newTask.setStatus(req.getStatus());
 			newTask.setEntryDate(new Date());
-			newTask.setDueDate(retrieveCorrectDate(req.getDueDate()));
+			newTask.setDueDate((req.getDueDate() != null) ? retrieveCorrectDate(req.getDueDate()) : null);
 			newTask.setUser(user);
 			
 			return taskRepo.save(newTask);
@@ -126,7 +126,7 @@ public class ApplicationServiceImpl implements ApplicationService{
 			task.setTitle(req.getTitle());
 			task.setDescription(req.getDescription());
 			task.setStatus(req.getStatus());
-			task.setDueDate(retrieveCorrectDate(req.getDueDate()));
+			task.setDueDate((req.getDueDate() != null) ? retrieveCorrectDate(req.getDueDate()) : null);
 			
 			taskRepo.save(task);
 			

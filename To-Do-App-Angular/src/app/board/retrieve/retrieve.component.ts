@@ -26,7 +26,10 @@ export class RetrieveComponent implements OnInit {
 		let userId = localStorage.getItem("userId") as unknown as number;
 
 		this.appService.getAllUserTask(userId).subscribe((response: any) => {
-			this.tasks = response.map((task: any) => { return this.mapToTask(task) });
+			this.tasks = response.map((task: any) => { 
+				task.entryDate = new Date(task.entryDate.replace(/-/g, '\/')).toLocaleDateString();
+				return this.mapToTask(task);
+			});
 			this.layout = this.groupByThree(3, this.tasks);
 			localStorage.setItem("view", "all");
 		}, (error) => {
@@ -40,7 +43,10 @@ export class RetrieveComponent implements OnInit {
 		let userId = localStorage.getItem("userId") as unknown as number;
 
 		this.appService.getAllCompletedUserTask(userId).subscribe((response: any) => {
-			this.tasks = response.map((task: any) => { return this.mapToTask(task) });
+			this.tasks = response.map((task: any) => { 
+				task.entryDate = new Date(task.entryDate.replace(/-/g, '\/')).toLocaleDateString();
+				return this.mapToTask(task);
+			});
 			this.layout = this.groupByThree(3, this.tasks);
 			localStorage.setItem("view", "done");
 		}, (error) => {
@@ -54,7 +60,10 @@ export class RetrieveComponent implements OnInit {
 		let userId = localStorage.getItem("userId") as unknown as number;
 
 		this.appService.getAllOngoingUserTask(userId).subscribe((response: any) => {
-			this.tasks = response.map((task: any) => { return this.mapToTask(task) });
+			this.tasks = response.map((task: any) => { 
+				task.entryDate = new Date(task.entryDate.replace(/-/g, '\/')).toLocaleDateString();
+				return this.mapToTask(task); 
+			});
 			this.layout = this.groupByThree(3, this.tasks);
 			localStorage.setItem("view", "ongoing");
 		}, (error) => {
@@ -65,10 +74,12 @@ export class RetrieveComponent implements OnInit {
 
 	addTaskToDB(task:Task){
 
+		let date = new Date();
 		let userId = localStorage.getItem("userId") as unknown as number;
 		let view = localStorage.getItem("view") as unknown as string;
 
 		task.status = (task.status == '') ? "Not-Started" : task.status;
+		task.entryDate = date.toLocaleDateString();
 
 		this.appService.addNewTask(userId, task.title, task.description, task.status, task.dueDate).subscribe((response:any)=>{
 			console.log("Added Card");

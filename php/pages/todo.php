@@ -73,15 +73,39 @@
 
                 while($row = mysqli_fetch_assoc($query)) {
 
-                    echo
+                    if ($row["Status"] == "OverDue") {
 
-                      '<tr>' .
+                        echo '<tr class = "overdue">';
+
+                    }
+
+                      else if ($row["Status"] == "Done") {
+    
+                        echo '<tr class = "done">';
+    
+                    }
+    
+                      else if ($row["Status"] == "Not-Started") {
+    
+                        echo '<tr class = "notstarted">';
+
+                    }
+    
+                      else if ($row["Status"] == "In-Progress") {
+    
+                        echo '<tr class = "inprogress">';
+    
+                    }
+
+                    echo
 
                         '<td>' . $row["Title"] . '</td>' .
                         '<td>Description: ' . $row["Description"] . '</td>' .
 
                         '<td>
-                        <a id="update-redirect' . $row["tID"] . '" class="btn btn-outline-primary">Edit</a> <br> <br> 
+                        <button class="btn btn-primary" role="button">
+                        <a id="update-redirect' . $row["tID"] . '">Edit</a> 
+                        </button>
                         </td>' .
 
                         '<td>
@@ -116,9 +140,11 @@
     </div>
 </div>
 
+
 <style>
    
     nav {
+
         background-color: #e7e4f7;
     }
 
@@ -130,24 +156,51 @@
     }
 
     li {
+        
         float: left;
     }
 
     a {
         display: block;
-        padding: 8px;
+        padding: 2px;
         color: black;
     }
 
     body {
+
         background: linear-gradient(90deg, #d5d1eb, #beb6f0, #d5d1eb);
     }
 
     table, tr, td {
 
-        border: 6px #bdb6e5 solid;
-        background-color: whitesmoke;
+        border: 4px #b2abda solid;
+        background-color: #ffffff;
         padding: 6px;
+    }
+
+    tr.overdue {
+
+        color: red;
+    }
+
+
+    tr.done {
+
+        color: #2bd500;
+    }
+
+
+
+    tr.notstarted {
+
+        color: gray;
+    }
+
+
+
+    tr.inprogress {
+
+        color: blue;
     }
 
 
@@ -155,7 +208,10 @@
 
     font-size: 18px;
     text-align: center;
+
     }
+
+    
 
     
     label {

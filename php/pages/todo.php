@@ -69,79 +69,44 @@
 
                 echo '<table>';
 
-
-
                 $counter = 0;
-
-
 
                 while($row = mysqli_fetch_assoc($query)) {
 
-
-
                     echo
-
-
 
                       '<tr>' .
 
-
-
                         '<td>' . $row["Title"] . '</td>' .
-
                         '<td>Description: ' . $row["Description"] . '</td>' .
 
                         '<td>
-
                         <a id="update-redirect' . $row["tID"] . '" class="btn btn-outline-primary">Edit</a> <br> <br> 
-
                         </td>' .
-
 
                         '<td>
-
                           <button class="btn btn-primary" data-toggle="collapse" data-target="#c' . $counter . '" role="button">
-
                             Open
-
                           </button>
-
                         </td>' .
 
-
-
                         '<td class="collapse" id="c' . $counter . '">' .
-
                               '<p>Due Date: ' . $row["DueDate"] . '</p>' .
-
                         '</td>' .
-
 
 
                         '<td class="collapse" id="c' . $counter . '">' .
-
                           '<p>Status: ' . $row["Status"] . '</p>' .
-
                         '</td>' .
-
-
 
                       '</tr>';
 
-
-
                       $counter += 1;
-
-
-
                 }
-
-
 
                 echo '</table>';
 
                 $todoDB->close();
-
             ?>
 
             </center>

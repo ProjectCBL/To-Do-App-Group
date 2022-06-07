@@ -22,7 +22,7 @@
                     justify-content-start
                     
                     col-12">
-            <a class="navbar-brand" style="cursor: pointer;" id="log-out">To-Do</a>
+            <a class="navbar-brand">To-Do</a>
             <button class="navbar-toggler" type="button"
                     data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -36,7 +36,10 @@
                         <a class="nav-link">Ongoing Tasks</a> <!-- add link -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Completed Tasks</a> <!-- add link -->
+                        <a class="nav-link" >Completed Tasks</a> <!-- add link -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="cursor: pointer;" id="log-out">Log Out</a> <!-- add link -->
                     </li>
                 </ul>
             </div>
@@ -64,22 +67,78 @@
         
                 $query = $todoDB->getAllUserTasks($username);
 
-                while($row = mysqli_fetch_assoc($query)){
+                echo '<table>';
 
-                    $date = ($row["DueDate"]) ? (" | Due Date: " . $row["DueDate"]) : ("");
 
-                    echo '<div class="card" style="width: 50%;">
-                        <div class="card-body">
-                            <h5 class="card-title">' . $row["Title"] . '</h5>' .
-                            '<p class="card-text" style="margin: 0">Description: ' . $row["Description"] . '</p>' .
-                            '<p class="card-text" style="margin: 0">Entry Date: ' . $row["EntryDate"] . $date . '</p>' .
-                            '<p class="card-text" style="margin-bottom: 10px">Status: <b ' . getStatusStyle($row["Status"]) . '> ' . $row["Status"] . '</b></p>' .
-                            '<a id="update-redirect' . $row["tID"] . '" class="btn btn-outline-primary">Edit</a>
-                        </div>
-                    </div>
-                    <br>
-                    ';
+
+                $counter = 0;
+
+
+
+                while($row = mysqli_fetch_assoc($query)) {
+
+
+
+                    echo
+
+
+
+                      '<tr>' .
+
+
+
+                        '<td>' . $row["Title"] . '</td>' .
+
+                        '<td>Description: ' . $row["Description"] . '</td>' .
+
+                        '<td>
+
+                        <a id="update-redirect' . $row["tID"] . '" class="btn btn-outline-primary">Edit</a> <br> <br> 
+
+                        </td>' .
+
+
+                        '<td>
+
+                          <button class="btn btn-primary" data-toggle="collapse" data-target="#c' . $counter . '" role="button">
+
+                            Open
+
+                          </button>
+
+                        </td>' .
+
+
+
+                        '<td class="collapse" id="c' . $counter . '">' .
+
+                              '<p>Due Date: ' . $row["DueDate"] . '</p>' .
+
+                        '</td>' .
+
+
+
+                        '<td class="collapse" id="c' . $counter . '">' .
+
+                          '<p>Status: ' . $row["Status"] . '</p>' .
+
+                        '</td>' .
+
+
+
+                      '</tr>';
+
+
+
+                      $counter += 1;
+
+
+
                 }
+
+
+
+                echo '</table>';
 
                 $todoDB->close();
 
@@ -112,12 +171,38 @@
     a {
         display: block;
         padding: 8px;
-        color: black;  
+        color: black;
     }
 
     body {
         background: linear-gradient(90deg, #d5d1eb, #beb6f0, #d5d1eb);
     }
+
+    table, tr, td {
+
+        border: 6px #bdb6e5 solid;
+        background-color: whitesmoke;
+        padding: 6px;
+    }
+
+
+    td {
+
+    font-size: 18px;
+    text-align: center;
+    }
+
+    
+    label {
+        height: 20px;
+        width: 30px;
+        position: relative;
+        border-bottom: 1px solid;
+        padding: 4px;
+        box-sizing: border-box;
+
+    }
+        
 
 </style>
    
@@ -130,5 +215,10 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
+<script>
+    $(document).on('click',function(){
+    $('.collapse').collapse('hide');
+    })
+</script>
 </body>
 </html>

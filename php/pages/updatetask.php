@@ -59,7 +59,7 @@
 
     a {
         display: block;
-        padding: 8px; 
+        padding: 2px; 
         color: black; 
     }
 

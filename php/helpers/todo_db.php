@@ -25,6 +25,34 @@
             );
         }
 
+        function getAllIncompleteUserTasks($userName){
+            $id = $this->getUserId($userName);
+            return $this->grabQueryResults(
+                "SELECT " . 
+                "tID," .
+                "Title, " . 
+                "Description, " .
+                "Status, " . 
+                "EntryDate, ". 
+                "DueDate " .
+                "FROM Tasks WHERE AccountID='{$id}' AND status != 'Done'"
+            );
+        }
+
+        function getAllCompleteUserTasks($userName){
+            $id = $this->getUserId($userName);
+            return $this->grabQueryResults(
+                "SELECT " . 
+                "tID," .
+                "Title, " . 
+                "Description, " .
+                "Status, " . 
+                "EntryDate, ". 
+                "DueDate " .
+                "FROM Tasks WHERE AccountID='{$id}' AND status = 'Done'"
+            );
+        }
+
         function getUserId($userName){
             $query = $this->grabQueryResults("SELECT * FROM Users WHERE UserName='{$userName}'");
             $id = $query->fetch_assoc()["uID"];

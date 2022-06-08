@@ -65,7 +65,7 @@
 
                 $username = $_SESSION["username"];
         
-                $query = $todoDB->getAllUserTasks($username);
+                $query = $todoDB->getAllCompleteUserTasks($username);
 
                 echo '<table>';
 

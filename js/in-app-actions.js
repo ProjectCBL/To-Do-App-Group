@@ -28,6 +28,42 @@ $(document).ready(function(){
 
     });
 
+    $("#get-ongoing").click(function(event){
+
+        event.preventDefault();
+
+        $.ajax({
+            type: "GET",
+            url: "../php/redirects/ongoing_redirect.php",
+            success: (data)=>{$("#body").html(data);}
+        });
+
+    });
+
+    $("#get-complete").click(function(event){
+
+        event.preventDefault();
+
+        $.ajax({
+            type: "GET",
+            url: "../php/redirects/complete_redirect.php",
+            success: (data)=>{$("#body").html(data);}
+        });
+
+    });
+
+    $("#home").click(function(event){
+
+        event.preventDefault(); 
+
+        $.ajax({
+            type: "GET",
+            url: "../php/pages/todo.php",
+            success: (data)=>{$("#body").html(data);}
+        });
+
+    });
+
     // #endregion
 
     // #region Task List Actions

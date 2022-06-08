@@ -4,7 +4,7 @@
 
     $todoDB->connect();
 
-    require_once('../pages/todo.php?username=$_SESSION["username"]');
+    require_once('../pages/ongoing.php');
 
     $todoDB->close();
 

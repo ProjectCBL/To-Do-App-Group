@@ -18,7 +18,7 @@
                     justify-content-start
                     
                     col-12">
-            <a class="navbar-brand" style="cursor: pointer;" id="log-out">To-Do</a>
+            <a class="navbar-brand" id="home" style="cursor: pointer;">To-Do</a>
             <button class="navbar-toggler" type="button"
                     data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -26,13 +26,16 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="todo.html">Home</a>
+                        <a class="nav-link" href="#" id="add-item">Add Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Ongoing Tasks</a> <!-- add link -->
+                        <a class="nav-link" href="#" id="get-ongoing">Ongoing Tasks</a> <!-- add link -->
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Completed Tasks</a> <!-- add link -->
+                        <a class="nav-link" href="#" id="get-complete">Completed Tasks</a> <!-- add link -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="log-out" href="#">Log Out</a> <!-- add link -->
                     </li>
                 </ul>
             </div>

@@ -74,13 +74,13 @@
 
 <body>
 
-<div class="container">
+<div class="container mt-3">
     <div class="row">
         <div class="col"/>
         <div class="col">
             <div class="input-group">
                 <form action="" class="form-container" method="POST">
-                    <h2>Add Task</h2> <br> 
+                    <h2>Update Task</h2> <br> 
                 
                     <?php
                         

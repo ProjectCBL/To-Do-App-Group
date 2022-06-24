@@ -6,8 +6,6 @@ This application was designed for the purpose of Capgemini's NGT program where n
 - Eleanor Kelman &rarr; Front/Back-End Developer
 - Christopher Bessette-Lee &rarr; Back-End Developer & Database Management
 
----
-
 ## Purpose
 
 The to-do application is a web-based application that allows users to create and manage to-do list items.  The following features are presented in the application:
@@ -20,8 +18,6 @@ The to-do application is a web-based application that allows users to create and
 - Delete Task
 - Filter Task by Completion
 
----
-
 ## Stack
 
 This is our current stack we used for the To-Do Application:
@@ -31,8 +27,6 @@ This is our current stack we used for the To-Do Application:
 - Javascript/Jquery
 - PHP
 - MySQL
-
----
 
 ## Installation / Initial Set-Up
 
